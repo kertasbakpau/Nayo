@@ -4,7 +4,7 @@
 class Nayo{
     // protected static $controller = "controller";
     private static $args = array();
-    
+
     public static function run(){
 
         self::init();
@@ -53,6 +53,7 @@ class Nayo{
 
 
         require CONFIG_PATH . "Config.php";
+        require CONFIG_PATH . "Route.php";
 
         $base_url = $config['base_url'];
         $splitedbaseurl = explode("/", $base_url);
@@ -67,7 +68,7 @@ class Nayo{
         if(count($splitedbaseurl) == 5){
             $baseurlfolder = $splitedbaseurl[3];
             
-            define("CONTROLLER", !empty($spliteduri[count($splitedbaseurl) - 3]) ? $spliteduri[count($splitedbaseurl) - 3] : 'Home');
+            define("CONTROLLER", !empty($spliteduri[count($splitedbaseurl) - 3]) ? $spliteduri[count($splitedbaseurl) - 3] : $route['default']);
             
             define("ACTION", !empty($spliteduri[count($splitedbaseurl) - 2]) ? $spliteduri[count($splitedbaseurl) - 2] : 'index');
         }
@@ -89,6 +90,8 @@ class Nayo{
         require CORE_PATH . "Model.php";
 
         require CORE_PATH . "Request.php";
+
+        require CORE_PATH . "Session.php";
 
 
         // Load configuration file

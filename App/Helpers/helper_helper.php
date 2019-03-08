@@ -1,7 +1,15 @@
 <?php
 
+function encryptMd5($string){
+    $hash = md5($string);
+    $lastestString = substr($hash, strlen($hash) - 5, 5);
+    $newChar = strrev($lastestString);
+    $newString = substr($hash, 0,strlen($hash) - 5).$newChar;
+    return $newString;
+}
+
 function get_variable(){
-    return "UMKM";
+    return "accountingumkm";
 }
 
 function setisnull($data){

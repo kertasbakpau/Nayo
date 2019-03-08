@@ -1,4 +1,5 @@
 <?php
+namespace App\Models;
 use App\Models\Base_Model;
 
 class M_users extends Base_Model {

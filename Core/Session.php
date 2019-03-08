@@ -3,15 +3,13 @@ namespace Core;
 
 class Session {
 
-    public function post($var){
-        if(isset($_POST[$var]))
-            return $_POST[$var];
-        return null;
+    public function set($name, $value){
+        $_SESSION[$name] = $value;
     }
 
-    public function get($var){
-        if(isset($_GET[$var]))
-            return $_GET[$var];
+    public function get($name){
+        if(isset($_SESSION[$name]))
+            return $_SESSION[$name];
         return null;
     }
 }

@@ -4,10 +4,13 @@ use Core\Request;
 
 class Nayo_Controller{
     protected $request = false;
+    protected $session = false;
 
     public function __construct(){
         if(!$this->request)
             $this->request = new Request();
+        if(!$this->session)
+            $this->session = new Session();
         
     }
 

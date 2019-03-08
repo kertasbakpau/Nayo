@@ -53,6 +53,15 @@ class Nayo_Model {
         return $this->results;
     }
 
+    
+
+    public function findOne($filter = array()){
+        $result = $this->findAll($filter);
+        if(count($result) > 0)
+            return $result[0];
+        return null;
+    }
+
     public function find($id){
 
         $result = $this->db_result->getById($id);

@@ -1,9 +1,8 @@
 <?php
 // namespace App\Controllers;
+use App\Controllers\Base_Controller;
 
-use Core\Nayo_Controller;
-
-class Home extends Nayo_Controller{
+class Home extends Base_Controller{
     
     public function index(){
         $this->loadView('home/home');
