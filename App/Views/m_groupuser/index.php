@@ -10,7 +10,7 @@
   <div class="container-fluid">
     <!-- Page Header-->
     <header> 
-          <h1 class="h3 display"><?= lang('Form.master_groupuser') ?> </h1>
+          <h1 class="h3 display"><?= lang('Form.master_groupuser')?> </h1>
       </tr>
     </header>
     <div class="row">
@@ -20,10 +20,10 @@
           <div class="card-header">
             <div class = "row">
               <div class="col-6">
-                <h4><?= "Data" ?></h4>
+                <h4><?= lang('Form.data')?></h4>
               </div>
               <div class="col-6 text-right">
-                <a href="<?= base_url('m_groupuser/add')?>"><i class = "fa fa-plus"></i> Tambah</a>
+                <a href="<?= base_url('M_groupuser/add')?>"><i class = "fa fa-plus"></i> Tambah</a>
               </div>
             </div>
           </div>
@@ -33,19 +33,19 @@
                 <thead class=" text-primary">
                   <tr role = "row">
                     <!-- <th># </th> -->
-                    <th><?=  "name"?></th>
-                    <th><?=  "description"?></th>
-                    <th><?=  "createat"?></th>
-                    <th class="disabled-sorting text-right"><?=  "actions"?></th>
+                    <th><?=  lang('Form.name')?></th>
+                    <th><?=  lang('Form.description')?></th>
+                    <th><?=  lang('Form.createat')?></th>
+                    <th class="disabled-sorting text-right"><?=  lang('Form.actions')?></th>
                   </tr>
                 </thead>
                 <tfoot class=" text-primary">
                   <tr role = "row">
                     <!-- <th># </th> -->
-                    <th><?=  "name"?></th>
-                    <th><?=  "description"?></th>
-                    <th><?=  "createat"?></th>
-                    <th class="disabled-sorting text-right"><?=  "actions"?></th>
+                    <th><?=  lang('Form.name')?></th>
+                    <th><?=  lang('Form.description')?></th>
+                    <th><?=  lang('Form.createat')?></th>
+                    <th class="disabled-sorting text-right"><?=  lang('Form.actions')?></th>
                   </tr>
                 </tfoot>
                 <tbody>
@@ -54,13 +54,13 @@
                   {
                 ?>
                     <tr role = "row" id = <?= $value->Id?>>
-                      <td><a href= "<?= base_url('m_groupuser/edit/'.$value->Id);?>" class = "text-muted"><?= $value->GroupName?></a></td>
+                      <td><a href= "<?= base_url('M_groupuser/edit/'.$value->Id);?>" class = "text-muted"><?= $value->GroupName?></a></td>
                       <td><?= $value->Description?></td>
                       <td><?= $value->Created?></td>
                       <td class = "td-actions text-right">
-                        <a href="#" rel="tooltip" title="<?=  "role"?>" class="btn-just-icon link-action role"><i class="fa fa-user"></i></a>
-                        <a href="#" rel="tooltip" title="<?=  "reportrole"?>" class="btn-just-icon link-action reportrole"><i class="fa fa-list"></i></a>
-                        <a href="#" rel="tooltip" title="<?=  "delete"?>" class="btn-just-icon link-action delete"><i class="fa fa-trash"></i></a>
+                        <a href="#" rel="tooltip" title="<?=  lang('Form.role')?>" class="btn-just-icon link-action role"><i class="fa fa-user"></i></a>
+                        <a href="#" rel="tooltip" title="<?=  lang('Form.reportrole')?>" class="btn-just-icon link-action reportrole"><i class="fa fa-list"></i></a>
+                        <a href="#" rel="tooltip" title="<?=  lang('Form.delete')?>" class="btn-just-icon link-action delete"><i class="fa fa-trash"></i></a>
                       </td>
                     </tr>
                 <?php
@@ -93,7 +93,7 @@
       responsive: true,
       language: {
       search: "_INPUT_",
-      "search": "<?= "search"?>"+" : "
+      "search": "<?= lang('Form.search')?>"+" : "
       },
       "columnDefs": [ 
         {
@@ -121,7 +121,7 @@
             
             $.ajax({
               type : "POST",
-              url : "<?= base_url('m_groupuser/delete/');?>",
+              url : "<?= base_url('M_groupuser/delete/');?>",
               data : {id : id},
               success : function(data){
                 var status = $.parseJSON(data);
@@ -152,13 +152,13 @@
     table.on( 'click', '.role', function () {
         $tr = $(this).closest('tr');
         var id = $tr.attr('id');
-        window.location = "<?= base_url('m_groupuser/editrole/');?>" + id;
+        window.location = "<?= base_url('M_groupuser/editrole/');?>" + id;
     });
 
     table.on( 'click', '.reportrole', function () {
         $tr = $(this).closest('tr');
         var id = $tr.attr('id');
-        window.location = "<?= base_url('m_groupuser/editreportrole/');?>" + id;
+        window.location = "<?= base_url('M_groupuser/editreportrole/');?>" + id;
     });
   }
 

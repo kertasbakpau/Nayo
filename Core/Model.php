@@ -2,15 +2,18 @@
 namespace Core;
 use Core\Database\DBResult;
 use Core\Database\Database;
+use Core\Session;
 
 class Nayo_Model {
     protected $db = false;
     protected $db_result = false;
+    protected $session = false;
     protected $results = array();
 
     //filtering
     protected $append = "";
     protected $where = array();
+    protected $order = array();
 
     public function __construct(){
         if(!$this->db_result)
@@ -18,6 +21,9 @@ class Nayo_Model {
         
         if(!$this->db)
             $this->db = new Database();
+
+        if(!$this->session)
+            $this->session = new Session();
 
     }
 
@@ -31,13 +37,16 @@ class Nayo_Model {
 
         $where = (isset($filter['where']) ? $filter['where'] : FALSE);
         $orwhere = (isset($filter['orwhere']) ? $filter['orwhere'] : FALSE);
+        $order = (isset($filter['order']) ? $filter['order'] : FALSE);
 
         if($where)
             $this->where($where);
         
-            
         if($orwhere)
-            $this->orwhere($orwhere);
+            $this->orWhere($orwhere);
+
+        if($order)
+            $this->orderBy($order);
 
         $results = $this->db_result->getAllData($this->append);
         $this->append = "";
@@ -74,12 +83,28 @@ class Nayo_Model {
     }
 
     public function save(){
+        $fields = $this->db_result->getFields();
+        $userdata = $this->session->get(get_variable().'userdata');
+
         $newId;
         if(!isset($this->Id)){
+
+            if(in_array("Created", $fields))
+                $this->Created = mysqldatetime();
+
+            if(in_array("CreatedBy", $fields))
+                $this->CreatedBy = $userdata['Username'];
+
             $newId = $this->db_result->insert($this);
         }
         else {
-            // echo $this->Id;
+            
+            if(in_array("Modified", $fields))
+                $this->Modified = mysqldatetime();
+
+            if(in_array("ModifiedBy", $fields))
+                $this->ModifiedBy = $userdata['Username'];
+
             $newId = $this->db_result->update($this);
         }
 
@@ -96,8 +121,8 @@ class Nayo_Model {
         $wheres = array();
 
         foreach($where as $k => $v){
-            array_push($this->where, "{$k} '{$v}'") ;
-            array_push($wheres, "{$k} '{$v}'") ;
+            array_push($this->where, "{$k}= '{$v}'") ;
+            array_push($wheres, "{$k}= '{$v}'") ;
         }
 
         $this->append .= $qry.implode(" AND ", $wheres);
@@ -105,7 +130,7 @@ class Nayo_Model {
         return $this;
     }
 
-    public function orwhere($orwhere){
+    public function orWhere($orwhere){
         $qry="";
         if(count($this->where) == 0)
             $qry = " WHERE ";
@@ -115,14 +140,96 @@ class Nayo_Model {
         $wheres = array();
 
         foreach($orwhere as $k => $v){
-            array_push($this->where, "{$k} '{$v}'") ;
-            array_push($wheres, "{$k} '{$v}'") ;
+            array_push($this->where, "{$k}= '{$v}'") ;
+            array_push($wheres, "{$k}= '{$v}'") ;
         }
 
         $this->append .= $qry.implode(" OR ", $wheres);
 
         return $this;
     }
-    
-    
+
+    public function orderBy($order){
+        $qry = " ORDER BY ";
+
+        foreach($order as $k => $v){
+            array_push($this->order, "{$k} {$v}") ;
+        }
+
+        $this->append .= $qry.implode(" , ", $this->order);
+        
+        return $this;
+    }
+
+    public function __call($name, $argument){
+
+        if (substr($name, 0, 4) == 'get_' && substr($name, 4, 5) != 'list_' && substr($name, 4, 6) != 'first_' )
+		{
+			$entity = 'App\\Models\\'.table(substr($name, 4));
+            $field = substr($name, 4).'_Id';
+            
+            $entityobject = new $entity;
+
+			if(isset($this->$field)){
+                $result = $entityobject->find($this->$field);
+                return $result;
+			} else {
+				return $entityobject;
+			}
+			
+		} else if (substr($name, 0, 4) == 'get_' && substr($name, 4, 5) == 'list_') {
+            
+            $entity = 'App\\Models\\'.table(substr($name, 9));
+            $field = $this->entity.'_Id';
+
+			if(isset($this->Id)){
+                $entityobject = new $entity;
+                $params = array(
+                    'where' => array(
+                        $field => $this->Id
+                    )
+                );
+                $result = $entityobject->findAll($params);
+				return $result;
+			}
+            return array();
+
+        } else if (substr($name, 0, 4) == 'get_' && substr($name, 4, 6) == 'first_') {
+
+            $entity = 'App\\Models\\'.table(substr($name, 10));
+            $field = $this->entity.'_Id';
+
+            $entityobject = new $entity;
+			if(isset($this->Id)){
+                $params = array(
+                    'where' => array(
+                        $field => $this->Id
+                    )
+                );
+                $result = $entityobject->findOne($params, true);
+
+				return $result;
+            }
+            
+            return null;
+
+		} else {
+			trigger_error('Call to undefined method '.__CLASS__.'::'.$name.'()', E_USER_ERROR);
+		}
+        
+    }
+
 }
+
+
+if (!defined('MYSQL_EMPTYDATE')) define('MYSQL_EMPTYDATE', '0000-00-00');
+if (!defined('MYSQL_EMPTYDATETIME')) define('MYSQL_EMPTYDATETIME', '0000-00-00 00:00:00');
+
+if (!function_exists('table'))
+{
+	function table($entity)
+	{
+		return $entity."s";
+	}
+}    
+    

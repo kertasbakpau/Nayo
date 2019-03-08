@@ -23,7 +23,7 @@ class DBResult {
         
     }
 
-    private function getFields(){
+    public function getFields(){
 
         $sql = "DESC ". $this->table;
         $result = $this->db->getAll($sql);
@@ -49,6 +49,8 @@ class DBResult {
             $this->fields['pk'] = $pk;
 
         }
+
+        return $this->fields;
 
     }
 

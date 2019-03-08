@@ -1,5 +1,5 @@
 <?php
-// namespace App\Controllers;
+namespace App\Controllers;
 use App\Models\M_groupusers;
 use App\Controllers\Base_Controller;
 
@@ -13,7 +13,13 @@ class M_groupuser extends Base_Controller{
     public function index(){
         $groupusers = new M_groupusers();
         
-        $result = $groupusers->findAll();
+        $params = array(
+            'order' => array(
+                'GroupName' => 'DESC'
+            )
+        );
+
+        $result = $groupusers->findAll($params);
         // echo json_encode($result);
         $data['model'] = $result;
         $this->loadView('m_groupuser/index', $data);

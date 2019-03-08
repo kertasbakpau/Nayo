@@ -8,6 +8,7 @@ class M_groupusers extends Base_Model {
     public $Deleted;
 
     protected $table = 'm_groupusers';
+    protected $entity = 'M_Groupuser';
 
     public function getdata(){
         return $this->query('SELECT * FROM m_groupusers');

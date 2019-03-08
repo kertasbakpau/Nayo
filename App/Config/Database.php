@@ -4,7 +4,7 @@ $config['default'] = array(
     'host' => '',
     'user' => 'root',
     'password' => '',
-    'dbname' => 'accounting_2019',
+    'dbname' => 'Nayo',
     'port' => '',
     'charset' => ''
 );

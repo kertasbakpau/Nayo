@@ -1,6 +1,4 @@
 <?php
-// use App\Controllers;
-
 class Nayo{
     // protected static $controller = "controller";
     private static $args = array();
@@ -75,8 +73,6 @@ class Nayo{
 
         define("CURR_CONTROLLER_PATH", CONTROLLER_PATH);
 
-        // require_once CURR_CONTROLLER_PATH . "$controller.php";
-
         define("CURR_VIEW_PATH", VIEW_PATH);
 
         // Load core classes
@@ -112,7 +108,7 @@ class Nayo{
     private static function autoloadfile(){
         require CONFIG_PATH . "Autoload.php";
         $loader = new Loader();
-        $loader->coreHelper(array('url', 'language'));
+        $loader->coreHelper(array('url', 'language', 'helper'));
         $loader->appHelper($autoload['helper']);
     }
 
@@ -121,7 +117,7 @@ class Nayo{
     private static function load($classname){
 
         // Here simply autoload app’s controller and model classes
-        // echo $classname;
+        echo $classname;
         if(explode("\\", $classname)[1] == "Models"){
             $name = explode("\\", $classname)[2];
             require_once MODEL_PATH . "$name.php";
@@ -140,20 +136,16 @@ class Nayo{
  
     private static function dispatch() {
         // Instantiate the controller class and call its action method
-        // echo json_encode(self::$args);
+        
         $controller_name = CONTROLLER;
 
         $action_name = ACTION;
 
-        require_once CURR_CONTROLLER_PATH . "$controller_name.php";
+        $controllerpath = "App\\Controllers\\".$controller_name;
 
-        $controller = new $controller_name;
-
-        // if(count(self::$args) == 0)
-        //     $controller->$action_name();
-        // else {
-            call_user_func_array(array($controller, $action_name), self::$args);
-        // }
+        $controller = new $controllerpath;
+            
+        call_user_func_array(array($controller, $action_name), self::$args);
 
  
     }

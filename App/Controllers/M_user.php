@@ -1,4 +1,5 @@
 <?php
+namespace App\Controllers;
 use App\Base_Controller;
 use App\Models\M_users;
 

@@ -12,5 +12,6 @@ class M_users extends Base_Model {
     public $Language;
 
     protected $table = 'm_users';
+    protected $entity = 'M_User';
 
 }
