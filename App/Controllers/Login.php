@@ -1,4 +1,5 @@
 <?php
+namespace App\Controllers;
 use Core\Nayo_Controller;
 use App\Models\M_users;
 
@@ -23,7 +24,7 @@ class Login extends Nayo_Controller{
 
         $params = array(
             'where' => array(
-                'password =' => encryptMd5(get_variable().$username.$password)
+                'password' => encryptMd5(get_variable().$username.$password)
             )
         );
 

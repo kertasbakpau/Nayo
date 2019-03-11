@@ -1,3 +1,0 @@
-<?php
-
-$route['default'] = "Login";

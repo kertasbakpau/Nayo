@@ -13,24 +13,24 @@ class Database {
 
      * Constructor, to connect to database, select database and set charset
 
-     * @param $config string configuration array
+     * @param $db string configuration array
 
      */
 
     public function __construct(){
         require 'App\Config\Database.php';
 
-        $host = isset($config['default']['host'])? $config['default']['host'] : 'localhost';
+        $host = isset($db['default']['host'])? $db['default']['host'] : 'localhost';
 
-        $user = isset($config['default']['user'])? $config['default']['user'] : 'root';
+        $user = isset($db['default']['user'])? $db['default']['user'] : 'root';
 
-        $password = isset($config['default']['password'])? $config['default']['password'] : '';
+        $password = isset($db['default']['password'])? $db['default']['password'] : '';
 
-        $dbname = isset($config['default']['dbname'])? $config['default']['dbname'] : '';
+        $dbname = isset($db['default']['dbname'])? $db['default']['dbname'] : '';
 
-        $port = isset($config['default']['port'])? $config['default']['port'] : '3306';
+        $port = isset($db['default']['port'])? $db['default']['port'] : '3306';
 
-        $charset = isset($config['default']['charset'])? $config['default']['charset'] : '3306';
+        $charset = isset($db['default']['charset'])? $db['default']['charset'] : '3306';
 
 
         if (!$this->conn) {

@@ -48,9 +48,9 @@ class M_groupuser extends Base_Controller{
 
     public function edit($id){
         $model = new M_groupusers();
-        $groupusers = $model->find($id);
-        $data['model'] = $groupusers;
-        $this->loadView('m_groupuser/edit', $data);
+        // $groupusers = $model->find($id);
+        // $data['model'] = $groupusers;
+        // $this->loadView('m_groupuser/edit', $data);
     }
 
     public function editsave(){

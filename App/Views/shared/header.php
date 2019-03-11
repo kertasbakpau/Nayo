@@ -195,7 +195,7 @@
                 <!-- profile dropdown    -->
                 <li class="nav-item dropdown">
                   <a id="profile" rel="nofollow" data-target="#" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="nav-link language dropdown-toggle">
-                    hi, 
+                    hi, <?= $this->session->get(get_variable().'userdata')['Username']?>
                     <span class="d-none d-sm-inline-block"></span>
                   </a>
                   <ul aria-labelledby="profile" class="dropdown-menu">

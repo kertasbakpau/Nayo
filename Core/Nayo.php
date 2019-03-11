@@ -1,7 +1,15 @@
 <?php
+
+
 class Nayo{
-    // protected static $controller = "controller";
+    protected static $controller = "";
+    protected static $action = "";
+    protected static $routes = array();
     private static $args = array();
+
+    public function __construct(){
+        
+    }
 
     public static function run(){
 
@@ -49,27 +57,7 @@ class Nayo{
 
         define("UPLOAD_PATH", PUBLIC_PATH . "Uploads" . DS);
 
-
-        require CONFIG_PATH . "Config.php";
-        require CONFIG_PATH . "Route.php";
-
-        $base_url = $config['base_url'];
-        $splitedbaseurl = explode("/", $base_url);
-        
-        $requerturi = explode("/",$_SERVER['REQUEST_URI']);
-        $spliteduri = $requerturi;
-
-        for($i = 4; $i < count($requerturi); $i++){
-            array_push(self::$args, $spliteduri[$i]);
-        }
-
-        if(count($splitedbaseurl) == 5){
-            $baseurlfolder = $splitedbaseurl[3];
-            
-            define("CONTROLLER", !empty($spliteduri[count($splitedbaseurl) - 3]) ? $spliteduri[count($splitedbaseurl) - 3] : $route['default']);
-            
-            define("ACTION", !empty($spliteduri[count($splitedbaseurl) - 2]) ? $spliteduri[count($splitedbaseurl) - 2] : 'index');
-        }
+        self::urlInitialize();
 
         define("CURR_CONTROLLER_PATH", CONTROLLER_PATH);
 
@@ -117,7 +105,8 @@ class Nayo{
     private static function load($classname){
 
         // Here simply autoload app’s controller and model classes
-        echo $classname;
+        // echo $classname;
+
         if(explode("\\", $classname)[1] == "Models"){
             $name = explode("\\", $classname)[2];
             require_once MODEL_PATH . "$name.php";
@@ -126,20 +115,25 @@ class Nayo{
             $name = explode("\\", $classname)[2];
             require_once  DB_PATH . "$name.php";
 
-        } else if (explode("\\", $classname)[1] == "Controllers"){
+        } 
+        else if (explode("\\", $classname)[1] == "Controllers"){
             $name = explode("\\", $classname)[2];
-            require_once  CONTROLLER_PATH . "$name.php";
-
+            self::$controller = $name; 
+            require_once  CONTROLLER_PATH . self::$controller.".php";
         }
 
     }
  
     private static function dispatch() {
         // Instantiate the controller class and call its action method
-        
-        $controller_name = CONTROLLER;
 
-        $action_name = ACTION;
+        // require_once  CONTROLLER_PATH . self::$controller.".php";
+        
+        // echo self::$action;
+        $controller_name = self::$controller;
+        // echo $controller_name;
+
+        $action_name = self::$action;
 
         $controllerpath = "App\\Controllers\\".$controller_name;
 
@@ -148,5 +142,63 @@ class Nayo{
         call_user_func_array(array($controller, $action_name), self::$args);
 
  
+    }
+
+    private static function urlInitialize(){
+
+        require CORE_PATH . "Routes.php";
+        require CONFIG_PATH . "Config.php";
+        require CONFIG_PATH . "Routes.php";
+
+        self::$routes = $routes->routeCollections;
+        // echo json_encode(self::$routes);
+
+        $base_url = $config['base_url'];
+        $splitedbaseurl = explode("/", $base_url);
+        $requerturi = explode("/",$_SERVER['REQUEST_URI']);
+        $spliteduri = $requerturi;
+        echo json_encode($_SERVER, JSON_PRETTY_PRINT);
+        echo $_SERVER['SCRIPT_NAME'];
+        if(count($splitedbaseurl) == 5){
+            $word = array_slice($spliteduri, 2);
+            $routepath = implode("/",$word);
+            // echo $routepath;
+            if(!self::isRouteMatch($routepath)){
+            
+                self::$controller = !empty($spliteduri[count($splitedbaseurl) - 3]) ? $spliteduri[count($splitedbaseurl) - 3] : self::$routess['defaultController'];
+                
+                self::$action = !empty($spliteduri[count($splitedbaseurl) - 2]) ? $spliteduri[count($splitedbaseurl) - 2] : self::$routes['defaultMethod'];
+            
+            }
+            
+        }
+        
+        for($i = 4; $i < count($requerturi); $i++){
+            array_push(self::$args, $spliteduri[$i]);
+        }
+        // echo self::$controller;
+
+    }
+
+    private function isRouteMatch($routeName){
+        if(isset(self::$routes[$routeName])){
+            $route = explode("/", self::$routes[$routeName]);
+            if(count($route) == 1){
+                self::$controller = $route[0];
+                self::$action = 'index';
+            } else if(count($route) == 2){
+                self::$controller = $route[0];
+                self::$action = $route[1];
+            } else if(count($route) > 2) {
+
+            }
+            return true;
+        } else {
+            self::$controller = $routeName;
+            self::$action = 'index';
+            // echo self::$controller;
+            return false;
+        }
+
     }
 }

@@ -1,10 +1,10 @@
 <?php
 
-$config['default'] = array(
+$db['default'] = array(
     'host' => '',
     'user' => 'root',
     'password' => '',
-    'dbname' => 'Nayo',
+    'dbname' => 'nayo',
     'port' => '',
     'charset' => ''
 );
