@@ -22,7 +22,7 @@ class M_groupuser extends Base_Controller{
         $result = $groupusers->findAll($params);
         // echo json_encode($result);
         $data['model'] = $result;
-        $this->loadView('m_groupuser/index', $data);
+        // $this->loadView('m_groupuser/index', $data);
         
     }
 
@@ -30,7 +30,7 @@ class M_groupuser extends Base_Controller{
         
         $groupusers = new M_groupusers();
         $data['model'] = $groupusers;
-        $this->loadView('m_groupuser/add', $data);
+        // $this->loadView('m_groupuser/add', $data);
     }
 
     public function addsave(){
@@ -50,7 +50,7 @@ class M_groupuser extends Base_Controller{
         $model = new M_groupusers();
         // $groupusers = $model->find($id);
         // $data['model'] = $groupusers;
-        // $this->loadView('m_groupuser/edit', $data);
+        // // $this->loadView('m_groupuser/edit', $data);
     }
 
     public function editsave(){

@@ -57,6 +57,11 @@ class Nayo{
 
         define("UPLOAD_PATH", PUBLIC_PATH . "Uploads" . DS);
 
+        // if (preg_match("/php/", "PHP is the web scripting language of choice.")) {
+        //     echo "A match was found.";
+        // } else {
+        //     echo "A match was not found.";
+        // }
         self::urlInitialize();
 
         define("CURR_CONTROLLER_PATH", CONTROLLER_PATH);
@@ -153,52 +158,62 @@ class Nayo{
         self::$routes = $routes->routeCollections;
         // echo json_encode(self::$routes);
 
-        $base_url = $config['base_url'];
-        $splitedbaseurl = explode("/", $base_url);
-        $requerturi = explode("/",$_SERVER['REQUEST_URI']);
-        $spliteduri = $requerturi;
-        echo json_encode($_SERVER, JSON_PRETTY_PRINT);
-        echo $_SERVER['SCRIPT_NAME'];
-        if(count($splitedbaseurl) == 5){
-            $word = array_slice($spliteduri, 2);
-            $routepath = implode("/",$word);
-            // echo $routepath;
-            if(!self::isRouteMatch($routepath)){
+        // $base_url = $config['base_url'];
+        // $splitedbaseurl = explode("/", $base_url);
+        // $requerturi = explode("/",$_SERVER['REQUEST_URI']);
+        // $spliteduri = $requerturi;
+        // echo json_encode($_SERVER, JSON_PRETTY_PRINT);
+        self::isRouteMatch($_SERVER['PATH_INFO']);
+        // echo $_SERVER['SCRIPT_NAME'];
+        // if(count($splitedbaseurl) == 5){
+        //     $word = array_slice($spliteduri, 2);
+        //     $routepath = implode("/",$word);
+        //     // echo $routepath;
+        //     if(!self::isRouteMatch($routepath)){
             
-                self::$controller = !empty($spliteduri[count($splitedbaseurl) - 3]) ? $spliteduri[count($splitedbaseurl) - 3] : self::$routess['defaultController'];
+        //         self::$controller = !empty($spliteduri[count($splitedbaseurl) - 3]) ? $spliteduri[count($splitedbaseurl) - 3] : self::$routess['defaultController'];
                 
-                self::$action = !empty($spliteduri[count($splitedbaseurl) - 2]) ? $spliteduri[count($splitedbaseurl) - 2] : self::$routes['defaultMethod'];
+        //         self::$action = !empty($spliteduri[count($splitedbaseurl) - 2]) ? $spliteduri[count($splitedbaseurl) - 2] : self::$routes['defaultMethod'];
             
-            }
+        //     }
             
-        }
+        // }
         
-        for($i = 4; $i < count($requerturi); $i++){
-            array_push(self::$args, $spliteduri[$i]);
-        }
+        // for($i = 4; $i < count($requerturi); $i++){
+        //     array_push(self::$args, $spliteduri[$i]);
+        // }
         // echo self::$controller;
 
     }
 
     private function isRouteMatch($routeName){
-        if(isset(self::$routes[$routeName])){
-            $route = explode("/", self::$routes[$routeName]);
-            if(count($route) == 1){
-                self::$controller = $route[0];
-                self::$action = 'index';
-            } else if(count($route) == 2){
-                self::$controller = $route[0];
-                self::$action = $route[1];
-            } else if(count($route) > 2) {
-
+        // echo $routeName;
+        foreach(self::$routes as $key => $route){
+            // echo $key;
+            if(preg_match($routeName."/", $key, $match)){
+                echo "match ".$key."<br>";
+            } else {
+                echo "not "."<br>";
             }
-            return true;
-        } else {
-            self::$controller = $routeName;
-            self::$action = 'index';
-            // echo self::$controller;
-            return false;
         }
+        // if(isset(self::$routes[$routeName])){
+        //     $route = explode("/", self::$routes[$routeName]);
+        //     if(count($route) == 1){
+        //         self::$controller = $route[0];
+        //         self::$action = 'index';
+        //     } else if(count($route) == 2){
+        //         self::$controller = $route[0];
+        //         self::$action = $route[1];
+        //     } else if(count($route) > 2) {
+
+        //     }
+        //     return true;
+        // } else {
+        //     self::$controller = $routeName;
+        //     self::$action = 'index';
+        //     // echo self::$controller;
+        //     return false;
+        // }
 
     }
 }
