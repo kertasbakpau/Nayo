@@ -22,35 +22,36 @@ class M_groupuser extends Base_Controller{
         $result = $groupusers->findAll($params);
         // echo json_encode($result);
         $data['model'] = $result;
-        // $this->loadView('m_groupuser/index', $data);
+        $this->loadView('m_groupuser/index', $data);
         
     }
 
-    public function add(){
-        
+    public function create(){
         $groupusers = new M_groupusers();
         $data['model'] = $groupusers;
-        // $this->loadView('m_groupuser/add', $data);
+        $this->loadView('m_groupuser/add', $data);
     }
 
-    public function addsave(){
-        $name = $this->request->post('named');
-        $description = $this->request->post('description');
+    public function store(){
+        // $name = $this->request->post('named');
+        // $description = $this->request->post('description');
 
-        $groupusers = new M_groupusers();
-        $groupusers->GroupName = setisnull($name);
-        $groupusers->Description = setisnull($description);
-        $groupusers->save();
+        // $groupusers = new M_groupusers();
+        // $groupusers->GroupName = setisnull($name);
+        // $groupusers->Description = setisnull($description);
+        // $groupusers->save();
 
-        redirect('M_groupuser/add');
+        // redirect('M_groupuser/add');
+
+        // echo $id;
 
     }
 
     public function edit($id){
         $model = new M_groupusers();
-        // $groupusers = $model->find($id);
-        // $data['model'] = $groupusers;
-        // // $this->loadView('m_groupuser/edit', $data);
+        $groupusers = $model->find($id);
+        $data['model'] = $groupusers;
+        $this->loadView('m_groupuser/edit', $data);
     }
 
     public function editsave(){
