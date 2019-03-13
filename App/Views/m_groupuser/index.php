@@ -23,7 +23,7 @@
                 <h4><?= lang('Form.data')?></h4>
               </div>
               <div class="col-6 text-right">
-                <a href="<?= base_url('M_groupuser/add')?>"><i class = "fa fa-plus"></i> Tambah</a>
+                <a href="<?= base_url('mgroupuser/add')?>"><i class = "fa fa-plus"></i> Tambah</a>
               </div>
             </div>
           </div>
@@ -54,7 +54,7 @@
                   {
                 ?>
                     <tr role = "row" id = <?= $value->Id?>>
-                      <td><a href= "<?= base_url('M_groupuser/edit/'.$value->Id);?>" class = "text-muted"><?= $value->GroupName?></a></td>
+                      <td><a href= "<?= base_url('mgroupuser/edit/'.$value->Id);?>" class = "text-muted"><?= $value->GroupName?></a></td>
                       <td><?= $value->Description?></td>
                       <td><?= $value->Created?></td>
                       <td class = "td-actions text-right">
@@ -121,7 +121,7 @@
             
             $.ajax({
               type : "POST",
-              url : "<?= base_url('M_groupuser/delete/');?>",
+              url : "<?= base_url('mgroupuser/delete/');?>",
               data : {id : id},
               success : function(data){
                 var status = $.parseJSON(data);
@@ -152,13 +152,13 @@
     table.on( 'click', '.role', function () {
         $tr = $(this).closest('tr');
         var id = $tr.attr('id');
-        window.location = "<?= base_url('M_groupuser/editrole/');?>" + id;
+        window.location = "<?= base_url('mgroupuser/editrole/');?>" + id;
     });
 
     table.on( 'click', '.reportrole', function () {
         $tr = $(this).closest('tr');
         var id = $tr.attr('id');
-        window.location = "<?= base_url('M_groupuser/editreportrole/');?>" + id;
+        window.location = "<?= base_url('mgroupuser/editreportrole/');?>" + id;
     });
   }
 

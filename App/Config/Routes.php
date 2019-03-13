@@ -12,11 +12,15 @@ $app->route	= System\Route::instance($app->request);
 $route		= $app->route;
 
 // Your routes go here
-
-$route->resource('/mgroupuser', 'App\Controllers\M_groupuser');
-// $route->get('/mgroupuser/add', 'App\Controllers\M_groupuser@add');
-// $route->get('/mgroupuser/addsave', 'App\Controllers\M_groupuser@addsave');
-// $route->get('/mgroupuser/edit/?', 'App\Controllers\M_groupuser@edit');
-// $route->get('/mgroupuser/delete/?', 'App\Controllers\M_groupuser@delete');
+$route->get('/mgroupuser', 'App\Controllers\M_groupuser@index');
+// $route->group('/mgroupuser', function()
+// {
+//     $this->get('/', 'App\Controllers\M_groupuser@index');
+//     $this->get('/add', 'App\Controllers\M_groupuser@add');
+//     $this->post('/addsave', 'App\Controllers\M_groupuser@addsave');
+//     $this->get('/edit/?', 'App\Controllers\M_groupuser@edit');
+//     $this->post('/editsave', 'App\Controllers\M_groupuser@editsave');
+//     $this->get('/delete/?', 'App\Controllers\M_groupuser@delete');
+// });
 
 $route->end();

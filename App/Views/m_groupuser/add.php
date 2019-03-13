@@ -27,7 +27,7 @@
             </div>
           </div>
           <div class="card-body">                 
-            <form method = "post" action = "<?= base_url('mgroupuser');?>">
+            <form method = "post" action = "<?= base_url('mgroupuser/addsave');?>">
               <div class="form-group">
                 <div class = "required">
                   <label><?= lang('Form.name')?></label>

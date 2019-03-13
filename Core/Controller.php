@@ -18,8 +18,7 @@ class Nayo_Controller{
         // echo $url;
         foreach($datas as $key => $data){
             ${$key} = $data;
-        }
-
+        }   
         include(APP_PATH."Views/".$url.".php");
 
     }

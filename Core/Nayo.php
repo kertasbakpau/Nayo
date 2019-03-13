@@ -111,33 +111,12 @@ class Nayo{
             require_once  DB_PATH . "$name.php";
 
         } 
-        // else if (explode("\\", $classname)[1] == "Controllers"){
-        //     $name = explode("\\", $classname)[2];
-        //     require_once  CONTROLLER_PATH . self::$controller.".php";
-        // }
 
     }
  
     private static function dispatch() {
-        // Instantiate the controller class and call its action method
 
-        // $controller_name = self::$controller;
-
-        // $action_name = self::$action;
-
-        // $controllerpath = "App\\Controllers\\".$controller_name;
-
-        // $controller = new $controllerpath;
-            
-        // call_user_func_array(array($controller, $action_name), self::$args);
-        
-        
-
+        require "App\Config\Routes.php";
  
-    }
-
-    private static function urlInitialize(){
-
-
     }
 }

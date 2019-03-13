@@ -26,25 +26,22 @@ class M_groupuser extends Base_Controller{
         
     }
 
-    public function create(){
+    public function add(){
         $groupusers = new M_groupusers();
         $data['model'] = $groupusers;
         $this->loadView('m_groupuser/add', $data);
     }
 
-    public function store(){
-        // $name = $this->request->post('named');
-        // $description = $this->request->post('description');
+    public function addsave(){
+        $name = $this->request->post('named');
+        $description = $this->request->post('description');
 
-        // $groupusers = new M_groupusers();
-        // $groupusers->GroupName = setisnull($name);
-        // $groupusers->Description = setisnull($description);
-        // $groupusers->save();
+        $groupusers = new M_groupusers();
+        $groupusers->GroupName = setisnull($name);
+        $groupusers->Description = setisnull($description);
+        $groupusers->save();
 
-        // redirect('M_groupuser/add');
-
-        // echo $id;
-
+        redirect('mgroupuser/add');
     }
 
     public function edit($id){
@@ -67,6 +64,6 @@ class M_groupuser extends Base_Controller{
         // echo json_encode($groupusers);
         $groupusers->save();
 
-        redirect('M_groupuser');
+        redirect('mgroupuser');
     }
 }
