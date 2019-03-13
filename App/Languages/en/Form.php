@@ -262,5 +262,7 @@ $lang =  [
     'profile' => 'Profile',
     'completename' => 'Complete Name',
     'aboutme' => 'About Me',
+    'beginningbalance' => 'Beginning Balance',
+    'linkaccount' => 'Link Account',
 ];
 

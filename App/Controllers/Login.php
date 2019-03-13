@@ -48,4 +48,9 @@ class Login extends Nayo_Controller{
             redirect('login');
         }
     }
+
+    public function dologout(){
+        $this->session->destroy();
+        redirect();
+    }
 }

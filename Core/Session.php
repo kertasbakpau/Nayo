@@ -12,4 +12,12 @@ class Session {
             return $_SESSION[$name];
         return null;
     }
+
+    public function destroy(){
+        session_destroy();
+    }
+
+    public function unset($name){
+        unset($_SESSION[$name]);
+    }
 }

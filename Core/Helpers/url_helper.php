@@ -8,6 +8,6 @@ function base_url($params = ''){
     
 }
 
-function redirect($newUrl){
+function redirect($newUrl = ""){
     header('Location: '.base_url($newUrl));
 }

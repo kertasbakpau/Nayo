@@ -12,8 +12,18 @@ $app->route	= System\Route::instance($app->request);
 $route		= $app->route;
 
 // Your routes go here
-$route->get('/', 'App\Controllers\Login@index');
 $route->get('/migration', 'App\Controllers\Db_migration@migrate');
+
+
+$route->get('/', 'App\Controllers\Login@index');
+$route->get('/home', 'App\Controllers\Home@index');
+
+$route->group('/login', function()
+{
+    $this->get('/', 'App\Controllers\Login@index');
+    $this->post('/dologin', 'App\Controllers\Login@dologin');
+    $this->get('/dologout', 'App\Controllers\Login@dologout');
+});
 
 $route->group('/mgroupuser', function()
 {

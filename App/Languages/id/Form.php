@@ -279,5 +279,7 @@ $lang =  [
     'profile' => 'Profil',
     'completename' => 'Nama Lengkap',
     'aboutme' => 'Tentang Saya',
+    'beginningbalance' => 'Saldo Awal',
+    'linkaccount' => 'Link Akun',
 ];
 

@@ -65,33 +65,17 @@
           <h5 class="sidenav-heading">Main</h5>
           <ul id="side-main-menu" class="side-menu list-unstyled">                  
             <li><a href="<?=  base_url('office');?>"> <i class="icon-home"></i>Home</a></li>
-            <li><a href="#exampledropdownDropdownGeneral" aria-expanded="false" data-toggle="collapse"> <i class="icon-interface-windows"></i><?= "Setting" ?></a>
+            <li><a href="#exampledropdownDropdownGeneral" aria-expanded="false" data-toggle="collapse"> <i class="icon-interface-windows"></i><?= lang("Form.setting") ?></a>
               <ul id="exampledropdownDropdownGeneral" class="collapse list-unstyled ">
-                <li><a href="<?=  base_url('mchartofaccount');?>"><?= "chartofaccount"?></a></li>
-                <li><a href="<?=  base_url('mbeginningbalance');?>"><?= "beginningbalance"?></a></li>
-                <li><a href="<?=  base_url('mainsetup');?>"><?= "linkaccount"?></a></li>
-                <li><a href="<?=  base_url('mcompany');?>"><?= "company"?></a></li>
-                <!-- <li><a href="<?=  base_url('mbank');?>"><?= "bank"?></a></li> -->
+                <li><a href="<?=  base_url('mchartofaccount');?>"><?= lang("Form.chartofaccount")?></a></li>
+                <li><a href="<?=  base_url('mbeginningbalance');?>"><?= lang("Form.beginningbalance")?></a></li>
+                <li><a href="<?=  base_url('mainsetup');?>"><?= lang("Form.linkaccount")?></a></li>
+                <li><a href="<?=  base_url('mcompany');?>"><?= lang("Form.company")?></a></li>
               </ul>
             </li>
-            <!-- <li><a href="#exampledropdownDropdownMaster" aria-expanded="false" data-toggle="collapse"> <i class="icon-interface-windows"></i>Master</a>
-              <ul id="exampledropdownDropdownMaster" class="collapse list-unstyled ">
-                <li><a href="<?=  base_url('mcarouselheader');?>"><?= "carouselheader"?></a></li>
-                <li><a href="<?=  base_url('mcategory');?>"><?= "category"?></a></li>
-                <li><a href="<?=  base_url('mitemtype');?>"><?= "itemtype"?></a></li>
-                <li><a href="<?=  base_url('mitem');?>"><?= "item"?></a></li>
-              </ul>
-            </li> -->
-            <!-- <li><a href="#exampledropdownDropdownInventory" aria-expanded="false" data-toggle="collapse"> <i class="icon-interface-windows"></i><?= "inventory"?></a>
-              <ul id="exampledropdownDropdownInventory" class="collapse list-unstyled ">
-                <li><a href="<?=  base_url('mitem');?>"><?= "item"?></a></li>
-                <li><a href="<?=  base_url('muom');?>"><?= "uom"?></a></li>
-                <li><a href="<?=  base_url('mwarehouse');?>"><?= "warehouse"?></a></li>
-              </ul>
-            </li> -->
-            <li><a href="#exampledropdownDropdownTransaction" aria-expanded="false" data-toggle="collapse"> <i class="icon-interface-windows"></i><?= "transaction"?></a>
+            <li><a href="#exampledropdownDropdownTransaction" aria-expanded="false" data-toggle="collapse"> <i class="icon-interface-windows"></i><?= lang("Form.transaction")?></a>
               <ul id="exampledropdownDropdownTransaction" class="collapse list-unstyled ">
-                <li><a href="<?=  base_url('tjournal');?>"><?= "transaction"?></a></li>
+                <li><a href="<?=  base_url('tjournal');?>"><?= lang("Form.transaction")?></a></li>
               </ul>
             </li>
           </ul>
@@ -100,7 +84,7 @@
           <h5 class="sidenav-heading"><?= "report"?></h5>
           <ul id="side-admin-menu" class="side-menu list-unstyled"> 
             <!-- <li><a href="<?=  base_url('report');?>"><i class="icon-interface-windows"></i><?= "report"?></a></li> -->
-            <li><a href="#exampledropdownDropdownReport" aria-expanded="false" data-toggle="collapse"> <i class="icon-interface-windows"></i><?= "report"?></a>
+            <li><a href="#exampledropdownDropdownReport" aria-expanded="false" data-toggle="collapse"> <i class="icon-interface-windows"></i><?= lang("Form.report")?></a>
               <ul id="exampledropdownDropdownReport" class="collapse list-unstyled ">
               
               </ul>
@@ -110,8 +94,8 @@
         <div class="admin-menu">
           <h5 class="sidenav-heading">User</h5>
           <ul id="side-admin-menu" class="side-menu list-unstyled"> 
-            <li><a href="<?=  base_url('mgroupuser');?>"><i class="icon-user"></i><?= "groupuser"?></a></li>
-            <li><a href="<?=  base_url('muser');?>"><i class="icon-user"></i><?= "user"?></a></li>
+            <li><a href="<?=  base_url('mgroupuser');?>"><i class="icon-user"></i><?= lang("Form.groupuser")?></a></li>
+            <li><a href="<?=  base_url('muser');?>"><i class="icon-user"></i><?= lang("Form.user")?></a></li>
           </ul>
         </div>
       
@@ -201,11 +185,11 @@
                   <ul aria-labelledby="profile" class="dropdown-menu">
                     <li><a rel="nofollow" class="dropdown-item" href ="<?=  base_url('changePassword');?>"> 
                       <i class="fa fa-edit"></i>
-                      <span><?= "changepassword"?></span></a>
+                      <span><?= lang("Form.changepassword")?></span></a>
                     </li>
                     <li><a rel="nofollow" class="dropdown-item" href ="<?=  base_url('login/dologout');?>"> 
                       <i class="fa fa-sign-out"></i>
-                      <span><?= "logout"?></span></a>
+                      <span><?= lang("Form.logout")?></span></a>
                     </li>
                     
                   </ul>
