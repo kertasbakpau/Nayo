@@ -1,5 +1,0 @@
-CREATE TABLE `test` (
-  `Id` int(11) NOT NULL AUTO_INCREMENT,
-  `Test` varchar(50) DEFAULT NULL,
-  PRIMARY KEY (`Id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8

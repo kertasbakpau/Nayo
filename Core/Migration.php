@@ -5,6 +5,8 @@ use  Core\Database\Database;
 class Nayo_Migration {
     protected $db = false;
     public $enable_auto_migration = FALSE;
+    protected $files;
+    protected $version = array();
     public function __construct(){
 
         include "App\Config\Config.php";
@@ -12,20 +14,19 @@ class Nayo_Migration {
         $this->enable_auto_migration = $config['enable_auto_migration'];
 
         if(!$this->db)
-            $this->db = new Database;
+            $this->db = new Database();
+            
+        $this->files = $this->readMigrationDatabaseFile();
+        $this->version = $this->getMigrationVersion();
+
     }
 
     public function migrateAll(){
         if(!$this->isTableExist('migrations'))
             $this->createMigrationTable();
-    
-        $files = $this->readMigrationDatabaseFile();
-        $version = $this->getMigrationVersion();
 
-        foreach($files as $key => $file){
-            if(!in_array($file, $version)) {
-                $this->migrate($key);
-            }
+        foreach($this->files as $file){
+            $this->migrate($file);
         }
         
         
@@ -62,10 +63,17 @@ class Nayo_Migration {
     }
 
     public function migrate($version){
-        $path = APP_PATH . "Database\\Migrations\\".$version.".sql";
-        $sql = file_get_contents($path);
-        $result = $this->db->query($sql);
 
+        if(!in_array($version, $this->version)) {
+            $path = APP_PATH . "Database\\Migrations\\".$version.".sql";
+            $sql = file_get_contents($path);
+            $result = $this->db->query($sql);
+
+            $insertversion = "INSERT INTO migrations VALUES(null, ".$version.", NOW())";
+            $result = $this->db->query($insertversion);
+        } else {
+            // echo "exist" .$version;
+        }
 
     }
 
@@ -75,15 +83,14 @@ class Nayo_Migration {
         if ($handle = opendir($path)) {
 
             while (false !== ($entry = readdir($handle))) {
-        
                 if ($entry != "." && $entry != "..") {
-                    $version[explode(".", $entry)[0]] = $entry;
+                    // echo $entry;
+                    array_push($version, explode(".", $entry)[0]);
                 }
             }
         
             closedir($handle);
         }
-        // echo json_encode($version);
         return $version;
     }
 
@@ -92,7 +99,7 @@ class Nayo_Migration {
         $result = $this->db->query($sql);
         $data = mysqli_fetch_assoc($result);
         if($data)
-            return count($data);
+            return $data;
         return array();
     }
 }
