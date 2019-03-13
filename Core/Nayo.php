@@ -1,5 +1,7 @@
 <?php
 
+use Core\Loader;
+use Core\Nayo_Migration;
 
 class Nayo{
     protected static $controller = "";
@@ -18,6 +20,8 @@ class Nayo{
         self::autoload();
 
         self::autoloadfile();
+
+        // self::migrate();
 
         self::dispatch();
     }
@@ -75,8 +79,9 @@ class Nayo{
 
         require CORE_PATH . "Session.php";
 
-        $GLOBALS['config'] = include CONFIG_PATH . "Config.php";
+        require CORE_PATH . "Migration.php";
 
+        $GLOBALS['config'] = include CONFIG_PATH . "Config.php";
 
         // Start session
 
@@ -118,5 +123,9 @@ class Nayo{
 
         require "App\Config\Routes.php";
  
+    }
+
+    private static function migrate(){
+
     }
 }

@@ -7,6 +7,8 @@ class Database {
 
     protected $sql;           //sql statement
 
+    public $currentdb;
+
    
 
     /**
@@ -35,9 +37,10 @@ class Database {
 
         if (!$this->conn) {
             $this->conn = mysqli_connect("$host", $user, $password, $dbname) or die('Database connection error');
+            $this->currentdb = $dbname;
             // die("Connection failed: " . mysqli_connect_error());
         } 
-
+        
     }
 
     public function getConnection(){
@@ -52,7 +55,7 @@ class Database {
 
         $str = $sql . "  [". date("Y-m-d H:i:s") ."]" . PHP_EOL;
 
-        file_put_contents("log.txt", $str,FILE_APPEND);
+        file_put_contents("log.txt", $str, FILE_APPEND);
         $result = mysqli_query($this->conn, $this->sql);
 
         if (! $result) {
@@ -60,13 +63,11 @@ class Database {
             die($this->errno().':'.$this->error().'<br />Error SQL statement is '.$this->sql.'<br />');
 
         }
-
         return $result;
 
     }
 
     public function getAll($sql){
-        // echo $sql;
         $query = $this->query($sql);
         
         $list = array();
@@ -76,7 +77,6 @@ class Database {
 
             }
         }
-        // echo json_encode($list);
 
         return $list;
 

@@ -20,7 +20,7 @@ class Nayo_Model {
             $this->db_result = new DBResult($this->table);
         
         if(!$this->db)
-            $this->db = new Database();
+            $this->db =  $this->db_result->db;
 
         if(!$this->session)
             $this->session = new Session();

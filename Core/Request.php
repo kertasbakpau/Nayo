@@ -14,4 +14,12 @@ class Request {
             return $_GET[$var];
         return null;
     }
+
+    public function body(){
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            return $_POST;
+       } else {
+            return $_GET;
+       }
+    }
 }

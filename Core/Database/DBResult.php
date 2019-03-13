@@ -4,7 +4,7 @@ namespace Core\Database;
 use Core\Database\Database;
 class DBResult {
     protected $sql = "";
-    protected $db = false;
+    public $db = false;
     protected $conn = false;
     protected $result = array();
     protected $table = "";
