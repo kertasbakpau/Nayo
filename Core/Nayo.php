@@ -81,6 +81,8 @@ class Nayo{
 
         require CORE_PATH . "Migration.php";
 
+        require CORE_PATH . "Exception.php";
+
         // $GLOBALS['config'] = include CONFIG_PATH . "Config.php";
 
         // Start session

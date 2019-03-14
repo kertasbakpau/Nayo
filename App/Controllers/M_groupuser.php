@@ -39,8 +39,10 @@ class M_groupuser extends Base_Controller{
         $groupusers = new M_groupusers();
         $groupusers->GroupName = setisnull($name);
         $groupusers->Description = setisnull($description);
-        $groupusers->save();
+        // $groupusers->save();
 
+        $this->session->setFlash('success_msg', array(0=>'Form.datasaved'));
+        // echo json_encode($this->session->getFlash('success_msg'));
         redirect('mgroupuser/add');
     }
 
@@ -65,5 +67,30 @@ class M_groupuser extends Base_Controller{
         $groupusers->save();
 
         redirect('mgroupuser');
+    }
+
+    public function delete(){
+        $id = $this->request->post("id");
+        $groupuser = new M_groupusers();
+        $model = $groupuser->find($id);
+        $model->delete();
+        // echo json_encode($model);
+        // $form = $this->paging->get_form_name_id();
+        // if($this->M_groupusers->is_permitted($_SESSION[get_variable().'userdata']['M_Groupuser_Id'],$form['m_groupuser'],'Delete'))
+        // {   
+        //     $deleteData = $this->M_groupusers->get($id);
+        //     $delete = $deleteData->delete();
+        //     if(isset($delete)){
+        //         $deletemsg = $this->helpers->get_query_error_message($delete['code']);
+        //         //$this->session->set_flashdata('warning_msg', $deletemsg);
+        //         echo json_encode(delete_status($deletemsg, FALSE));
+        //     } else {
+        //         $deletemsg = $this->paging->get_delete_message();
+        //         //$this->session->set_flashdata('delete_msg', $deletemsg);
+        //         echo json_encode(delete_status($deletemsg));
+        //     }
+        // } else {
+        //     echo json_encode(delete_status("", FALSE, TRUE));
+        // }
     }
 }

@@ -32,7 +32,18 @@ $route->group('/mgroupuser', function()
     $this->post('/addsave', 'App\Controllers\M_groupuser@addsave');
     $this->get('/edit/?', 'App\Controllers\M_groupuser@edit');
     $this->post('/editsave', 'App\Controllers\M_groupuser@editsave');
-    $this->get('/delete/?', 'App\Controllers\M_groupuser@delete');
+    $this->post('/delete', 'App\Controllers\M_groupuser@delete');
+});
+
+
+$route->group('/muser', function()
+{
+    $this->get('/', 'App\Controllers\M_user@index');
+    $this->get('/add', 'App\Controllers\M_user@add');
+    $this->post('/addsave', 'App\Controllers\M_user@addsave');
+    $this->get('/edit/?', 'App\Controllers\M_user@edit');
+    $this->post('/editsave', 'App\Controllers\M_user@editsave');
+    $this->post('/delete', 'App\Controllers\M_user@delete');
 });
 
 $route->end();

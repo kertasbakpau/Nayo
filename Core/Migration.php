@@ -7,6 +7,7 @@ class Nayo_Migration {
     public $enable_auto_migration = FALSE;
     protected $files;
     protected $version = array();
+    protected $countMigrated = 0;
     public function __construct(){
 
         include "App\Config\Config.php";
@@ -16,20 +17,21 @@ class Nayo_Migration {
         if(!$this->db)
             $this->db = new Database();
             
+        if(!$this->isTableExist('migrations'))
+            $this->createMigrationTable();
+
         $this->files = $this->readMigrationDatabaseFile();
         $this->version = $this->getMigrationVersion();
 
     }
 
     public function migrateAll(){
-        if(!$this->isTableExist('migrations'))
-            $this->createMigrationTable();
 
         foreach($this->files as $file){
             $this->migrate($file);
-        }
-        
-        
+        }        
+
+        echo "migration count : ". $this->countMigrated."<br>";
     }
 
     public function isTableExist($table){
@@ -40,7 +42,6 @@ class Nayo_Migration {
         $result = $this->db->query($sql);
 
         $data = mysqli_fetch_assoc($result);
-        
         if($data['count'] > 0){
             return true;
         }
@@ -66,13 +67,18 @@ class Nayo_Migration {
 
         if(!in_array($version, $this->version)) {
             $path = APP_PATH . "Database\\Migrations\\".$version.".sql";
-            $sql = file_get_contents($path);
-            $result = $this->db->query($sql);
+            $strSql = file_get_contents($path);
 
+            $sqls = explode(";", rtrim($strSql));
+            foreach($sqls as $sql){
+                $result = $this->db->query($sql.";");
+
+            }
+            echo $version. " : migrated successfuly <br>";
+            $this->countMigrated ++;
             $insertversion = "INSERT INTO migrations VALUES(null, ".$version.", NOW())";
             $result = $this->db->query($insertversion);
         } else {
-            // echo "exist" .$version;
         }
 
     }

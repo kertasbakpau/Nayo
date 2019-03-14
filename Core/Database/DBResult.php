@@ -124,6 +124,15 @@ class DBResult {
         }
     }
 
+    public function delete($id){
+        // try{
+            $this->sql = "DELETE FROM {$this->table} WHERE Id = ".$id;
+            $this->db->query($this->sql);
+        // } catch (Exception $e){
+        //     throw new Error($e);
+        // }
+    }
+
     public function where($params){
         foreach($params as $param){
             $table = (isset($param['table']) ? $param['table'] : FALSE);

@@ -8,7 +8,6 @@ class Db_migration {
         $migration = new Nayo_Migration();
         
         if($migration->enable_auto_migration){
-            $migration = new Nayo_Migration();
             $migration->migrateAll();
         }
     }

@@ -111,6 +111,11 @@ class Nayo_Model {
         return $newId;
     }
 
+    public function delete(){
+        $this->db_result->delete($this->Id);
+        // return $this;
+    }
+
     public function where($where){
         $qry="";
         if(count($this->where) == 0)

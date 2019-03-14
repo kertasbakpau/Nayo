@@ -209,9 +209,46 @@
       // });
       </script>
       <script>
+        function init(){
+          <?php 
+              if($this->session->isFlashExist('success_msg'))
+              {
+                  $msg = $this->session->getFlash('success_msg');
+                  for($i=0 ; $i<count($msg); $i++)
+                  {
+          ?>
+                      setNotification("<?= lang($msg[$i]); ?>", 2, "bottom", "right");
+          <?php 
+                  }
+              }
 
-        
-      }
+          ?>
+          <?php 
+              if($this->session->isFlashExist('add_warning_msg'))
+              {
+                  $msg = $this->session->getFlash('add_warning_msg');
+                  for($i=0 ; $i<count($msg); $i++)
+                  {
+          ?>
+                      setNotification("<?= lang($msg[$i]); ?>", 3, "bottom", "right");
+          <?php 
+                  }
+              }
+          
+              if($this->session->isFlashExist('edit_warning_msg'))
+              {
+                  $msg = $this->session->getFlash('edit_warning_msg');
+                  for($i=0 ; $i<count($msg); $i++)
+                  {
+          ?>
+              setNotification("<?= lang($msg[$i]); ?>", 2, "bottom", "right");
+          <?php 
+                  }
+              }
+
+          ?>
+        }
+      
       </script>
 
       

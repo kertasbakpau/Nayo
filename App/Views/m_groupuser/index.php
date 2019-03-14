@@ -113,8 +113,7 @@
      table.on( 'click', '.delete', function (e) {
         $tr = $(this).closest('tr');
         var data = table.row($tr).data();
-        var id = $tr.attr('id');
-        console.log(data[0]);
+        var id = $tr.attr('id')
         deleteData(data[0], function(result){
           if (result==true)
           {
@@ -124,24 +123,25 @@
               url : "<?= base_url('mgroupuser/delete/');?>",
               data : {id : id},
               success : function(data){
-                var status = $.parseJSON(data);
-                if(status['isforbidden']){
-                  window.location = "<?= base_url('Forbidden');?>";
-                } else {
-                  if(!status['status']){
-                    for(var i=0 ; i< status['msg'].length; i++){
-                      var message = status['msg'][i];
-                      setNotification(message, 3, "bottom", "right");
-                    }
-                  } else {
-                    for(var i=0 ; i< status['msg'].length; i++){
-                      var message = status['msg'][i];
-                      setNotification(message, 2, "bottom", "right");
-                    }
-                    table.row($tr).remove().draw();
-                    e.preventDefault();
-                  }
-                }
+                console.log(data);
+                // var status = $.parseJSON(data);
+                // if(status['isforbidden']){
+                //   window.location = "<?= base_url('Forbidden');?>";
+                // } else {
+                //   if(!status['status']){
+                //     for(var i=0 ; i< status['msg'].length; i++){
+                //       var message = status['msg'][i];
+                //       setNotification(message, 3, "bottom", "right");
+                //     }
+                //   } else {
+                //     for(var i=0 ; i< status['msg'].length; i++){
+                //       var message = status['msg'][i];
+                //       setNotification(message, 2, "bottom", "right");
+                //     }
+                //     table.row($tr).remove().draw();
+                //     e.preventDefault();
+                //   }
+                // }
               }
             });
           }

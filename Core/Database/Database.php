@@ -1,6 +1,7 @@
 <?php
 namespace Core\Database;
 
+use Core\Nayo_Exception;
 class Database {
 
     protected $conn = false;  //DB connection resources
@@ -34,7 +35,6 @@ class Database {
 
         $charset = isset($db['default']['charset'])? $db['default']['charset'] : '3306';
 
-
         if (!$this->conn) {
             $this->conn = mysqli_connect("$host", $user, $password, $dbname) or die('Database connection error');
             $this->currentdb = $dbname;
@@ -56,11 +56,15 @@ class Database {
         $str = $sql . "  [". date("Y-m-d H:i:s") ."]" . PHP_EOL;
 
         file_put_contents("log.txt", $str, FILE_APPEND);
-        $result = mysqli_query($this->conn, $this->sql);
 
+        $result = mysqli_query($this->conn, $this->sql);
+        
         if (! $result) {
 
             die($this->errno().':'.$this->error().'<br />Error SQL statement is '.$this->sql.'<br />');
+            // throw new Error();
+            // $exception = new Nayo_Exception();
+            // die($exception->exceptionHandler(new \Exception($this->error())));
 
         }
         return $result;

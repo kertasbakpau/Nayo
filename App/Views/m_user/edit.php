@@ -10,7 +10,7 @@
   <div class="container-fluid">
     <!-- Page Header-->
     <header> 
-          <h1 class="h3 display"><?= lang('ui_master_user')?> </h1>
+          <h1 class="h3 display"><?= lang('Form.master_user')?> </h1>
       </tr>
     </header>
     <div class="row">
@@ -19,7 +19,7 @@
           <div class="card-header">
             <div class = "row">
               <div class="col-6">
-                <h4><?= lang('ui_data')?></h4>
+                <h4><?= lang('Form.data')?></h4>
               </div>
               <div class="col-6 text-right">
                 <a href="<?= base_url('muser')?>"><i class = "fa fa-table"></i> Data</a>
@@ -31,11 +31,11 @@
               <input hidden id = "userid" type="text" class="form-control" name = "userid" value="<?= $model->Id?>">
               <input hidden id = "groupid" type="text" class="form-control" name = "groupid" value="<?= $model->M_Groupuser_Id?>">
               <div class="form-group bmd-form-group">
-                <label class = ""><?= lang('ui_name')?></label>
+                <label class = ""><?= lang('Form.name')?></label>
                 <input id="named" type="text"  class="form-control " name = "named" value="<?= $model->Username?>" required>
               </div>
               <div class="form-group">
-                <label><?= lang('ui_group_user')?></label>
+                <label><?= lang('Form.group_user')?></label>
                 <div class="input-group has-success">
                   
                   <input id = "groupname" type="text" class="form-control custom-readonly"  value="<?= $model->get_M_Groupuser()->GroupName?>" readonly>
@@ -46,7 +46,7 @@
                 </div>
               </div>
               <div class="form-group">       
-                <input type="submit" value="<?= lang('ui_save')?>" class="btn btn-primary">
+                <input type="submit" value="<?= lang('Form.save')?>" class="btn btn-primary">
               </div>
             </form>
           </div>
@@ -74,16 +74,16 @@
             <div class="row">
               <div class="col-sm-12">
                 <div class="table-responsive">
-                  <table data-page-length="<?= $_SESSION[get_variable().'usersettings']['RowPerpage']?>" id = "tableModalGroupUser" class="table table-striped table-no-bordered table-hover dataTable dtr-inline collapsed" cellspacing="0" width="100%" style="width: 100%;" role="grid" aria-describedby="datatables_info">
+                  <table data-page-length="5" id = "tableModalGroupUser" class="table table-striped table-no-bordered table-hover dataTable dtr-inline collapsed" cellspacing="0" width="100%" style="width: 100%;" role="grid" aria-describedby="datatables_info">
                     <thead class=" text-primary">
-                        <th><?=  lang('ui_group_user')?></th>
-                        <!-- <th><?=  lang('ui_description')?></th> -->
+                        <th><?=  lang('Form.group_user')?></th>
+                        <!-- <th><?=  lang('Form.description')?></th> -->
                     </thead>
                     <tfoot class=" text-primary">
                       <tr role = "row">
                         <!-- <th># </th> -->
-                        <th><?=  lang('ui_group_user')?></th>
-                        <!-- <th><?=  lang('ui_description')?></th> -->
+                        <th><?=  lang('Form.group_user')?></th>
+                        <!-- <th><?=  lang('Form.description')?></th> -->
                       </tr>
                     </tfoot>
                     <tbody>

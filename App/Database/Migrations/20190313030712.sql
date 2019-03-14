@@ -1,18 +1,30 @@
-CREATE OR REPLACE PROCEDURE `sp_profitlostcost`(
-	IN StartDate DATETIME,
-    IN EndDate DATETIME
-)
-	SELECT  a.`Code`, 
-		a.`Name`, 
-		a.Default,
-		CASE WHEN a.Default = 'D' THEN SUM(b.`Debet`) - SUM(b.`Credit`)
-			ELSE SUM(b.`Credit`) - SUM(b.`Debet`)
-		END Amount
-	FROM m_chartofaccounts a 
-	INNER JOIN t_journaldetails b ON b.`M_Chartofaccount_Id` = a.`Id`
-	INNER JOIN t_journals c ON c.Id = b.`T_Journal_Id`
-	WHERE a.CodeInt >= 4000000000 AND a.`CodeInt` < 5000000000
-		AND c.TranDate >= StartDate AND c.TranDate <= EndDate
-	GROUP BY a.`Code`, 
-		a.`Name`, 
-		a.Default;
+
+CREATE TABLE `m_groupusers` (
+  `Id` int(11) NOT NULL AUTO_INCREMENT,
+  `GroupName` varchar(100) NOT NULL,
+  `Description` varchar(300) NOT NULL,
+  `CreatedBy` varchar(50) DEFAULT NULL,
+  `ModifiedBy` varchar(50) DEFAULT NULL,
+  `Created` datetime DEFAULT NULL,
+  `Modified` datetime DEFAULT NULL,
+  PRIMARY KEY (`Id`)
+) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8;
+
+CREATE TABLE `m_users` (
+  `Id` int(11) NOT NULL AUTO_INCREMENT,
+  `M_Groupuser_Id` int(11) DEFAULT NULL,
+  `Username` varchar(100) NOT NULL,
+  `Password` varchar(50) NOT NULL,
+  `IsLoggedIn` smallint(11) NOT NULL DEFAULT '0',
+  `IsActive` smallint(11) NOT NULL DEFAULT '1',
+  `Language` varchar(50) NOT NULL DEFAULT 'indonesia',
+  `CreatedBy` varchar(50) DEFAULT NULL,
+  `ModifiedBy` varchar(50) DEFAULT NULL,
+  `Created` datetime DEFAULT NULL,
+  `Modified` datetime DEFAULT NULL,
+  PRIMARY KEY (`Id`),
+  KEY `m_users_M_Groupuser_Id_fk` (`M_Groupuser_Id`),
+  CONSTRAINT `m_users_M_Groupuser_Id_fk` FOREIGN KEY (`M_Groupuser_Id`) REFERENCES `m_groupusers` (`Id`) ON UPDATE CASCADE
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+
+INSERT INTO m_users (Username, Password) VALUES ('superadmin', '18e31bae1483a116b33cc49e32591064')
