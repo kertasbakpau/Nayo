@@ -1,3 +1,3 @@
 <?php
 
-$autoload['helper'] = array('helper');
+$autoload['helper'] = array('helper', 'paging');

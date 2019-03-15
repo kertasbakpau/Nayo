@@ -29,12 +29,6 @@ class Nayo{
     public static function init(){
         // Define path constants
 
-        define("DS", DIRECTORY_SEPARATOR);
-
-        define("ROOT", getcwd() . DS);
-        
-        define("BASE_PATH", ROOT);
-
         define("APP_PATH", ROOT . 'App' . DS);
 
         define("CORE_PATH", ROOT . "Core" . DS);
@@ -98,7 +92,7 @@ class Nayo{
     private static function autoloadfile(){
         require CONFIG_PATH . "Autoload.php";
         $loader = new Loader();
-        $loader->coreHelper(array('url', 'language', 'helper'));
+        $loader->coreHelper(array('url', 'language', 'helper', 'inflector'));
         $loader->appHelper($autoload['helper']);
     }
 

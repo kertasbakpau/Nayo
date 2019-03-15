@@ -34,7 +34,7 @@
                   <label class = ""><?= lang('Form.name')?></label>
                   <input id="named" type="text"  class="form-control " name = "named" value="<?= $model->Username?>" required>
                 </div>
-              </div>
+              </div> 
               <div class="form-group">
                 <div class = "required">
                   <label><?= lang('Form.group_user')?></label>

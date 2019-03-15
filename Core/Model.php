@@ -33,6 +33,11 @@ class Nayo_Model {
         return $results;
     }
 
+    public function count($filter = array()){
+        $result = $this->findAll($filter);
+        return count($result);
+    }
+
     public function findAll($filter = array()){
 
         $where = (isset($filter['where']) ? $filter['where'] : FALSE);
@@ -167,6 +172,7 @@ class Nayo_Model {
     }
 
     public function __call($name, $argument){
+        // echo $name;
 
         if (substr($name, 0, 4) == 'get_' && substr($name, 4, 5) != 'list_' && substr($name, 4, 6) != 'first_' )
 		{
@@ -185,8 +191,7 @@ class Nayo_Model {
 		} else if (substr($name, 0, 4) == 'get_' && substr($name, 4, 5) == 'list_') {
             
             $entity = 'App\\Models\\'.table(substr($name, 9));
-            $field = $this->entity.'_Id';
-
+            $field = entity($this->table).'_Id';
 			if(isset($this->Id)){
                 $entityobject = new $entity;
                 $params = array(
@@ -202,7 +207,7 @@ class Nayo_Model {
         } else if (substr($name, 0, 4) == 'get_' && substr($name, 4, 6) == 'first_') {
 
             $entity = 'App\\Models\\'.table(substr($name, 10));
-            $field = $this->entity.'_Id';
+            $field = entity($this->table).'_Id';
 
             $entityobject = new $entity;
 			if(isset($this->Id)){
@@ -234,7 +239,17 @@ if (!function_exists('table'))
 {
 	function table($entity)
 	{
-		return $entity."s";
+		return pluralize($entity);
 	}
-}    
+}  
+
+if (!function_exists('table'))
+{
+	function entity($table)
+	{
+        $word = titleize(singularize($table));
+        $split = explode(" ", $word);
+        return implode("_", $split);
+	}
+}  
     

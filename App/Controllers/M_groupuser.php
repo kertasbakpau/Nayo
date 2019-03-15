@@ -23,12 +23,12 @@ class M_groupuser extends Base_Controller{
         // echo json_encode($result);
         $data['model'] = $result;
         $this->loadView('m_groupuser/index', $data);
-        
+
     }
 
     public function add(){
         $groupusers = new M_groupusers();
-        $data['model'] = $groupusers;
+        $data = setPageData_paging($groupusers);
         $this->loadView('m_groupuser/add', $data);
     }
 
@@ -39,11 +39,20 @@ class M_groupuser extends Base_Controller{
         $groupusers = new M_groupusers();
         $groupusers->GroupName = setisnull($name);
         $groupusers->Description = setisnull($description);
-        // $groupusers->save();
 
-        $this->session->setFlash('success_msg', array(0=>'Form.datasaved'));
-        // echo json_encode($this->session->getFlash('success_msg'));
-        redirect('mgroupuser/add');
+        $validate = $groupusers->validate();
+        if($validate){
+            
+            $data = setPageData_paging($groupusers);
+            $this->session->setFlash('add_warning_msg', $validate);
+            $this->loadView('m_groupuser/add', $data);
+        } else {
+
+            $groupusers->save();
+            $this->session->setFlash('success_msg', array(0=>'Form.datasaved'));
+            redirect('mgroupuser/add');
+        }
+
     }
 
     public function edit($id){

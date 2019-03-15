@@ -1,5 +1,6 @@
 {
     "require": {
-        "nezamy/route": "^1.2"
+        "nezamy/route": "^1.2",
+        "icanboogie/inflector": "^1.4"
     }
 }

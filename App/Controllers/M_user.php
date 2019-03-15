@@ -48,7 +48,7 @@ class M_user extends Base_Controller{
         $model->CreatedBy = $_SESSION[get_variable().'userdata']['Username'];
         $model->save();
 
-        redirect('M_user/add');
+        redirect('muser/add');
 
     }
 
@@ -72,6 +72,6 @@ class M_user extends Base_Controller{
         // echo json_encode($users);
         $users->save();
 
-        redirect('M_user');
+        redirect('muser');
     }
 }
