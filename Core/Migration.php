@@ -11,18 +11,17 @@ class Nayo_Migration {
     public function __construct(){
 
         include "App\Config\Config.php";
-
         $this->enable_auto_migration = $config['enable_auto_migration'];
 
         if(!$this->db)
             $this->db = new Database();
-            
-        if(!$this->isTableExist('migrations'))
-            $this->createMigrationTable();
+        
+        if( $this->enable_auto_migration)
+            if(!$this->isTableExist('migrations'))
+                $this->createMigrationTable();
 
         $this->files = $this->readMigrationDatabaseFile();
         $this->version = $this->getMigrationVersion();
-
     }
 
     public function migrateAll(){
@@ -51,7 +50,7 @@ class Nayo_Migration {
 
     private function createMigrationTable(){
         $sql = "
-        CREATE TABLE `migrations` (
+            CREATE TABLE `migrations` (
             `Id` int(11) NOT NULL AUTO_INCREMENT,
             `Version` varchar(50) DEFAULT NULL,
             `ExecutedAt` DATETIME DEFAULT NULL,
@@ -102,10 +101,14 @@ class Nayo_Migration {
 
     private function getMigrationVersion(){
         $sql = "SELECT * FROM migrations";
-        $result = $this->db->query($sql);
-        $data = mysqli_fetch_assoc($result);
-        if($data)
+        $result = $this->db->getAll($sql);
+        if($result){
+            $data = array();
+            foreach($result as $res){
+                array_push($data, $res['Version']);
+            }
             return $data;
+        }
         return array();
     }
 }

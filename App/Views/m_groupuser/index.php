@@ -29,7 +29,7 @@
           </div>
           <div class="card-body">
             <div class="table-responsive">
-              <table id = "tableGroupUser" style="width: 100%;" class="table dataTable no-footer" role="grid">
+              <table id = "tableGroupUser" style="width: 100%;" class="table table-striped table-no-bordered table-hover dataTable dtr-inline collapsed " role="grid">
                 <thead class=" text-primary">
                   <tr role = "row">
                     <!-- <th># </th> -->

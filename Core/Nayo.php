@@ -77,7 +77,9 @@ class Nayo{
 
         require CORE_PATH . "Exception.php";
 
-        // $GLOBALS['config'] = include CONFIG_PATH . "Config.php";
+        require DB_PATH . "DBResult.php";
+
+        $GLOBALS['config'] = include CONFIG_PATH . "Config.php";
 
         // Start session
 
@@ -106,10 +108,6 @@ class Nayo{
         if(explode("\\", $classname)[1] == "Models"){
             $name = explode("\\", $classname)[2];
             require_once MODEL_PATH . "$name.php";
-
-        } else if (explode("\\", $classname)[1] == "Database"){
-            $name = explode("\\", $classname)[2];
-            require_once  DB_PATH . "$name.php";
 
         } 
 
