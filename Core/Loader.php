@@ -8,7 +8,7 @@ class Loader{
     public function library($libs = array()){
 
         foreach($libs as $lib){
-            include LIB_PATH . "$lib.php";
+            include LIB_PATH . ucfirst("$lib.php");
         }
 
     }
