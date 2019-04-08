@@ -93,7 +93,9 @@ class Nayo{
         require CONFIG_PATH . "Autoload.php";
         $loader = new Loader();
         $loader->coreHelper(array('url', 'language', 'helper', 'inflector'));
+        $loader->coreLibrary(array('ftp'));
         $loader->appHelper($autoload['helper']);
+        $loader->appLibrary($autoload['library']);
     }
 
     // Define a custom load method

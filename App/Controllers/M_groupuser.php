@@ -18,7 +18,7 @@ class M_groupuser extends Base_Controller{
                 'GroupName' => 'DESC'
             )
         );
-
+        
         $result = $groupusers->findAll($params);
         // echo json_encode($result);
         $data['model'] = $result;

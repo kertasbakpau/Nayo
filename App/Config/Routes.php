@@ -44,4 +44,6 @@ $route->group('/muser', function()
     $this->post('/delete', 'App\Controllers\M_user@delete');
 });
 
+$route->get('/test', 'App\Controllers\Test@index');
+
 $route->end();

@@ -5,7 +5,15 @@ class Loader{
 
 // Load library classes
 
-    public function library($libs = array()){
+    public function coreLibrary($libs = array()){
+
+        foreach($libs as $lib){
+            include LIB_PATH . ucfirst("$lib.php");
+        }
+
+    }
+
+    public function appLibrary($libs = array()){
 
         foreach($libs as $lib){
             include LIB_PATH . ucfirst("$lib.php");
