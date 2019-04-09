@@ -28,10 +28,10 @@ class Nayo_Model {
     }
 
     // get
-    public function query($sql){
-        $results = $this->db_result->query($sql);
-        return $results;
-    }
+    // public function query($sql){
+    //     $results = $this->db_result->query($sql);
+    //     return $results;
+    // }
 
     public function count($filter = array()){
         $result = $this->findAll($filter);
@@ -66,8 +66,6 @@ class Nayo_Model {
         }
         return $this->results;
     }
-
-    
 
     public function findOne($filter = array()){
         $result = $this->findAll($filter);

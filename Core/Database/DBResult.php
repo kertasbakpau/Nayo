@@ -10,7 +10,7 @@ class DBResult {
     protected $table = "";
     protected $fields = array();
 
-    public function __construct($table){
+    public function __construct($table = ""){
         $this->table = $table;  
         if(!$this->db){
             $this->db = new Database();
@@ -19,7 +19,9 @@ class DBResult {
             
         $this->sql = "select * from ".$this->table;
         // field collected
-        $this->getFields();
+        
+        if($this->table)
+            $this->getFields();
         
     }
 
@@ -60,7 +62,10 @@ class DBResult {
 
     public function query($sql){
         $query = $this->db->getAll($sql);
-        return $query;
+        if(count($query) == 1)
+            return $query[0];
+        else 
+            return $query;
     }
 
 
