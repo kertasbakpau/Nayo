@@ -1,9 +1,9 @@
 <?php
 namespace App\Controllers;
-use Core\Libraries\Ftp;
+use Core\Libraries\File;
 use Core\Database\DBBuilder;
 
-class Test {
+class Test extends Base_Controller{
 
     public function index(){
         // $ftp = new Ftp('192.168.1.30', 'Komputer', 'ratrace182');
@@ -13,8 +13,19 @@ class Test {
         // }
 
         // $ftp->close();
-        $builder = new DBBuilder();
-        echo json_encode($builder->query('select * from m_userprofiles'));
+        // $builder = new DBBuilder();
+        // $test = $builder->query('select count(*) as Count from m_groupusers');
+        // echo json_encode($test->Count);
+        $this->loadView('test/test');
+       
+    }
+
+    public function submittest(){
+        $file = new File('/assets/', array('pdf, docx'));
+
+        $file->upload($_FILES['file']);
+        echo $file->getErrorMessage();
+        // echo json_encode($_FILES);
     }
 
 }

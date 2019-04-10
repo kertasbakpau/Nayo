@@ -38,15 +38,15 @@ class Ftp {
         return false;
     }
 
-    public function download($localpath, $remotefile){
+    public function download(string $localpath, string $remotefile){
         ftp_get($this->connection, $localpath, $remotefile, FTP_ASCII, 0);
     }
 
-    public function upload($localpath, $remotefile){
+    public function upload(string $localpath, string $remotefile){
         ftp_get($this->connection, $localpath, $remotefile, FTP_ASCII, 0);
     }
 
-    public function mkdir($dirname, $currentdir = null){
+    public function mkdir(string $dirname, string $currentdir = null){
         if(!empty($currentdir))
             ftp_chdir($this->connection, $currentdir);
 

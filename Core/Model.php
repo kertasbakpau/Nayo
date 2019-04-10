@@ -27,12 +27,6 @@ class Nayo_Model {
 
     }
 
-    // get
-    // public function query($sql){
-    //     $results = $this->db_result->query($sql);
-    //     return $results;
-    // }
-
     public function count($filter = array()){
         $result = $this->findAll($filter);
         return count($result);
@@ -55,12 +49,10 @@ class Nayo_Model {
 
         $results = $this->db_result->getAllData($this->append);
         $this->append = "";
-        // echo json_encode($results);
         foreach ($results as $result){
             $object = new $this;
             foreach($result as $key => $row){
                 $object->$key = $row;
-                // echo $object->$key;
             }
             array_push($this->results, $object);
         }
@@ -80,7 +72,6 @@ class Nayo_Model {
         $object = new $this;
         foreach($result as $key => $row){
             $object->$key = $row;
-            // echo $object->$key;
         }
         return $object;
     }

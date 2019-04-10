@@ -3,6 +3,7 @@ namespace Core\Database;
 
 use Core\Database\Database;
 class DBResult {
+
     protected $sql = "";
     public $db = false;
     protected $conn = false;
@@ -60,16 +61,26 @@ class DBResult {
         return $this->fields['pk'];
     }
 
-    public function query($sql){
-        $query = $this->db->getAll($sql);
-        if(count($query) == 1)
-            return $query[0];
+    public function query(string $sql){
+
+        $list = array();
+        $query = $this->db->query($sql);
+        while ($row = mysqli_fetch_assoc($query)){
+
+            $data = json_encode($row);
+            $list[] = json_decode($data);
+        }
+
+        mysqli_free_result($query);
+
+        if(count($list) == 1)
+            return $list[0];
         else 
-            return $query;
+            return $list;
     }
 
 
-    public function getAllData($append = ""){
+    public function getAllData(string $append = ""){
         $query = $this->db->getAll($this->sql." ".$append); 
         // $result = mysqli_fetch_assoc($query);
         foreach($query as $row) {
@@ -138,7 +149,7 @@ class DBResult {
         // }
     }
 
-    public function where($params){
+    public function where(array $params){
         foreach($params as $param){
             $table = (isset($param['table']) ? $param['table'] : FALSE);
             $on = (isset($param['on']) ? $param['on'] : FALSE);
@@ -148,7 +159,7 @@ class DBResult {
     }
 
     //no finished
-    public function join($params){
+    public function join(array $params){
 
         foreach($params as $param){
             $table = (isset($param['table']) ? $param['table'] : FALSE);

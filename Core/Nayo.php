@@ -53,6 +53,8 @@ class Nayo{
 
         define("HELPER_PATH", CORE_PATH . "Helpers" . DS);
 
+        define("CORE_LANGUAGE_PATH", CORE_PATH . "Languages" . DS);
+
         define("UPLOAD_PATH", PUBLIC_PATH . "Uploads" . DS);
 
         define("CURR_CONTROLLER_PATH", CONTROLLER_PATH);

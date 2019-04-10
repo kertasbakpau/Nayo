@@ -8,13 +8,11 @@ class DBBuilder {
     public function __construct(){
         if(!$this->db_result)
             $this->db_result = new DBResult();
-        
     }
 
-    public function query($sql){
+    public function query(string $sql){
         $results = $this->db_result->query($sql);
         return $results;
     }
-
     
 }

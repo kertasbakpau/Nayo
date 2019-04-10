@@ -14,7 +14,7 @@ class Nayo_Controller{
         
     }
 
-    public function view($url = "", $datas = array()){
+    public function view(string $url = "",$datas = array()){
         // echo $url;
         foreach($datas as $key => $data){
             ${$key} = $data;
@@ -23,7 +23,7 @@ class Nayo_Controller{
 
     }
 
-    public function input($var){
+    public function input(string $var){
         return $_POST[$var];
     }
 

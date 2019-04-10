@@ -43,10 +43,19 @@ class Database {
         
     }
 
+    /**
+     * @return mysqli_connect
+     */
+
     public function getConnection(){
         return $this->conn;
     }
-
+    
+    /**
+     * @param string $sql  
+     * @return array
+     * 
+     */
     public function query($sql){        
 
         $this->sql = $sql;
@@ -62,14 +71,11 @@ class Database {
         if (! $result) {
 
             die($this->errno().':'.$this->error().'<br />Error SQL statement is '.$this->sql.'<br />');
-            // throw new Error();
-            // $exception = new Nayo_Exception();
-            // die($exception->exceptionHandler(new \Exception($this->error())));
 
         }
         return $result;
 
-    }
+    }   
 
     public function getAll($sql){
         $query = $this->query($sql);
@@ -81,20 +87,21 @@ class Database {
 
             }
         }
+        mysqli_free_result($query);
 
         return $list;
 
     }
 
     public function getOne($sql){
-        // echo $sql;
         $query = $this->query($sql);
         
         $single;
         if($query){
             $single = mysqli_fetch_assoc($query);
         }
-        // echo json_encode($list);
+
+        mysqli_free_result($query);
 
         return $single;
 

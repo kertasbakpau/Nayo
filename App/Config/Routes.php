@@ -45,5 +45,6 @@ $route->group('/muser', function()
 });
 
 $route->get('/test', 'App\Controllers\Test@index');
+$route->post('/submittest', 'App\Controllers\Test@submittest');
 
 $route->end();

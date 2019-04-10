@@ -33,7 +33,7 @@ class Nayo_Migration {
         echo "migration count : ". $this->countMigrated."<br>";
     }
 
-    public function isTableExist($table){
+    public function isTableExist(string $table){
         $sql = "SELECT count(*) as count
         FROM information_schema.TABLES
         WHERE (TABLE_SCHEMA = '{$this->db->currentdb}') AND (TABLE_NAME = '{$table}')";
@@ -62,7 +62,7 @@ class Nayo_Migration {
 
     }
 
-    public function migrate($version){
+    public function migrate(string $version){
 
         if(!in_array($version, $this->version)) {
             $path = APP_PATH . "Database\\Migrations\\".$version.".sql";
