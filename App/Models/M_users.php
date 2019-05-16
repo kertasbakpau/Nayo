@@ -13,6 +13,10 @@ class M_users extends Base_Model {
 
     protected $table = 'm_users';
 
+    public function __construct(){
+        parent::__construct();
+    }
+
     public function setPassword($password){
         $this->Password = encryptMd5(get_variable().$this->Username.$password);
         return $this->Password;

@@ -27,7 +27,7 @@ class Login extends Nayo_Controller{
                 'password' => encryptMd5(get_variable().$username.$password)
             )
         );
-
+        // print_r($user);
         $query = $user->findOne($params);
         // echo json_encode(get_object_vars($query));
         if ($query)  

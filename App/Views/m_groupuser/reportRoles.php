@@ -22,7 +22,7 @@
                 <h4><?= lang('ui_data')?></h4>
               </div>
               <div class="col-6 text-right">
-                <a href="<?= base_url('mgroupuser')?>"><i class = "fa fa-table"></i> Data</a>
+                <a href="<?= baseUrl('mgroupuser')?>"><i class = "fa fa-table"></i> Data</a>
               </div>
             </div>
           </div>
@@ -142,7 +142,7 @@
 <script>
     $("#searchbutton").on("click",function() {
         var search = $("#search").val();
-        //window.location =" <?= base_url('m_groupuser');?>?search="+search;
+        //window.location =" <?= baseUrl('m_groupuser');?>?search="+search;
     });
 
     $("#btnSave").on("click",function() {
@@ -152,7 +152,7 @@
         for (i = 1; i < rowLength; i++) {
         $.ajax({
             type:"POST",
-            url:"<?= base_url('M_groupuser/saverole')?>",
+            url:"<?= baseUrl('M_groupuser/saverole')?>",
             data:{
                 groupid: <?= $model->Id?>,
                 reportid : document.getElementById("td"+i+"reportid").innerHTML,
@@ -175,7 +175,7 @@
         // console.log(numbid);
         $.ajax({
             type:"POST",
-            url:"<?= base_url('m_groupuser/savereportrole')?>",
+            url:"<?= baseUrl('m_groupuser/savereportrole')?>",
             data:{
                 groupid: <?= $model->Id?>,
                 reportid : reportid,

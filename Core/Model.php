@@ -3,19 +3,22 @@ namespace Core;
 use Core\Database\DBResult;
 use Core\Database\Database;
 use Core\Session;
+use Core\Libraries\ClsList;
 
 class Nayo_Model {
     protected $db = false;
     protected $db_result = false;
     protected $session = false;
-    protected $results = array();
-
+    // protected $table = false;
     //filtering
     protected $append = "";
     protected $where = array();
     protected $order = array();
 
     public function __construct(){
+        // if(!$this->table)
+        //     $this->table = $table;
+
         if(!$this->db_result)
             $this->db_result = new DBResult($this->table);
         
@@ -49,14 +52,19 @@ class Nayo_Model {
 
         $results = $this->db_result->getAllData($this->append);
         $this->append = "";
+
+        $clsList = new ClsList(new $this);
+
         foreach ($results as $result){
             $object = new $this;
             foreach($result as $key => $row){
                 $object->$key = $row;
             }
-            array_push($this->results, $object);
+            // array_push($this->results, $object);
+            $clsList->add($object);
         }
-        return $this->results;
+        return $clsList->collections();
+        // return $this->re;
     }
 
     public function findOne($filter = array()){
@@ -110,7 +118,7 @@ class Nayo_Model {
         // return $this;
     }
 
-    public function where($where){
+    private function where($where){
         $qry="";
         if(count($this->where) == 0)
             $qry = " WHERE ";
@@ -120,8 +128,9 @@ class Nayo_Model {
         $wheres = array();
 
         foreach($where as $k => $v){
-            array_push($this->where, "{$k}= '{$v}'") ;
-            array_push($wheres, "{$k}= '{$v}'") ;
+            $newVal = escapeString($v);
+            array_push($this->where, "{$k}= '{$newVal}'") ;
+            array_push($wheres, "{$k}= '{$newVal}'") ;
         }
 
         $this->append .= $qry.implode(" AND ", $wheres);
@@ -129,7 +138,7 @@ class Nayo_Model {
         return $this;
     }
 
-    public function orWhere($orwhere){
+    private function orWhere($orwhere){
         $qry="";
         if(count($this->where) == 0)
             $qry = " WHERE ";
@@ -139,8 +148,9 @@ class Nayo_Model {
         $wheres = array();
 
         foreach($orwhere as $k => $v){
-            array_push($this->where, "{$k}= '{$v}'") ;
-            array_push($wheres, "{$k}= '{$v}'") ;
+            $newVal = escapeString($v);
+            array_push($this->where, "{$k}= '{$newVal}'") ;
+            array_push($wheres, "{$k}= '{$newVal}'") ;
         }
 
         $this->append .= $qry.implode(" OR ", $wheres);
@@ -148,7 +158,7 @@ class Nayo_Model {
         return $this;
     }
 
-    public function orderBy($order){
+    private function orderBy($order){
         $qry = " ORDER BY ";
 
         foreach($order as $k => $v){

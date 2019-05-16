@@ -8,6 +8,7 @@ class Nayo_Exception{
 
     public static function errorHandler($level, $message, $file, $line)
     {
+        // echo $file;
         if (error_reporting() !== 0) {  // to keep the @ operator working
             throw new \ErrorException($message, 0, $level, $file, $line);
         }
@@ -22,7 +23,7 @@ class Nayo_Exception{
         }
         http_response_code($code);
         // echo "error";
-        echo $code;
+        // echo $code;
         // if (\App\Config::SHOW_ERRORS) {
         //     echo "<h1>Fatal error</h1>";
         //     echo "<p>Uncaught exception: '" . get_class($exception) . "'</p>";
@@ -30,17 +31,39 @@ class Nayo_Exception{
         //     echo "<p>Stack trace:<pre>" . $exception->getTraceAsString() . "</pre></p>";
         //     echo "<p>Thrown in '" . $exception->getFile() . "' on line " . $exception->getLine() . "</p>";
         // } else {
-        //     $log = dirname(__DIR__) . '/logs/' . date('Y-m-d') . '.txt';
-        //     ini_set('error_log', $log);
+            // $log = dirname(__DIR__) . '/logs/' . date('Y-m-d') . '.txt';
+            // ini_set('error_log', $log);
 
-        //     $message = "Uncaught exception: '" . get_class($exception) . "'";
-        //     $message .= " with message '" . $exception->getMessage() . "'";
-        //     $message .= "\nStack trace: " . $exception->getTraceAsString();
-        //     $message .= "\nThrown in '" . $exception->getFile() . "' on line " . $exception->getLine();
+            echo "<div style= 'border-style: solid;border-color: red; padding : 0px 50px;'>";
+            echo "<br><b>A PHP Error was enccounter</b></br>";
+            echo "<br>Error Code : '" . $code . "'</br>";
+            echo "<br>Uncaught exception: '" . get_class($exception) . "'</br>";
+            echo "<br>with message : '" . $exception->getMessage() . "'</br>";
 
-        //     error_log($message);
+            $i=0;
+            $stacktrace = explode("#", $exception->getTraceAsString());
+            echo "<br>File : '" . $stacktrace[1] . "'</br>";
 
-        //     View::renderTemplate("$code.html");
+            echo "<br>Stack trace: </br>";
+            foreach($stacktrace as $trace){
+                if($i <= 1 ){}
+                else
+                    echo "<div style = 'padding : 0px 0px 0px 50px'><br>".$trace."</br></div>";
+                
+                $i++;
+            }
+            echo "<br>Thrown in '" . $exception->getFile() . "' on line " . $exception->getLine() . "'</br>";
+            // $message = "Error Code : '" . $code . "'";
+            // $message .= "Uncaught exception: '" . get_class($exception) . "'";
+            // $message .= " with message '" . $exception->getMessage() . "'";
+            // $message .= "\nStack trace: " . $exception->getTraceAsString();
+            // $message .= "\nThrown in '" . $exception->getFile() . "' on line " . $exception->getLine();
+
+            // error_log($message);
+            // set_error_handler()
+
+            // echo $message;
+            // View::renderTemplate("$code.html");
         // }
     }
 }

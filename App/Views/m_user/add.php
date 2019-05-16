@@ -22,12 +22,12 @@
                 <h4><?= lang('Form.data')?></h4>
               </div>
               <div class="col-6 text-right">
-                <!-- <a href="<?= base_url('muser')?>"><i class = "fa fa-table"></i> Data</a> -->
+                <!-- <a href="<?= baseUrl('muser')?>"><i class = "fa fa-table"></i> Data</a> -->
               </div>
             </div>
           </div>
           <div class="card-body">                   
-            <form method = "post" action = "<?= base_url('muser/addsave');?>">
+            <form method = "post" action = "<?= baseUrl('muser/addsave');?>">
               <input hidden id = "groupid" type="text" class="form-control" name = "groupid" value="<?= $model->M_Groupuser_Id?>">
               <div class="form-group bmd-form-group">
                 <div class = "required">
@@ -58,7 +58,7 @@
               </div>
               <div class="form-group">       
                 <input type="submit" value="<?= lang('Form.save')?>" class="btn btn-primary">
-                <a href="<?= base_url('muser')?>" value="<?= lang('Form.cancel')?>" class="btn btn-primary"><?= lang('Form.cancel')?></a>
+                <a href="<?= baseUrl('muser')?>" value="<?= lang('Form.cancel')?>" class="btn btn-primary"><?= lang('Form.cancel')?></a>
               </div>
             </form>
           </div>

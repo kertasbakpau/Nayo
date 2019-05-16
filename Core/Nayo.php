@@ -13,22 +13,52 @@ class Nayo{
         
     }
 
-    public static function run(){
+    public static function run($argv){
 
-        self::init();
+        if(empty($argv)){
+            self::init();
 
-        self::autoload();
+            self::autoload();
 
-        self::autoloadfile();
+            self::autoloadfile();
 
-        // self::migrate();
+            // self::migrate();
 
-        self::dispatch();
+            self::dispatch();
+            
+        } else {
+
+            self::define();
+
+            $function = "";
+            $params = array();
+            $i = 0;
+            foreach ($argv AS $arg){
+                if($i > 0){
+                    if($i == 1){
+                        $function = $arg;
+                    } else {
+                        $params[] = $arg;
+                    }
+                }
+                $i++;
+            }
+            
+            call_user_func_array(array("Core\\CLI", $function), $params);
+            
+        }
+    }
+
+    public function model(){
+        
     }
 
     public static function init(){
         // Define path constants
+        self::define();        
+    }
 
+    public static function define(){
         define("APP_PATH", ROOT . 'App' . DS);
 
         define("CORE_PATH", ROOT . "Core" . DS);
@@ -67,8 +97,6 @@ class Nayo{
 
         require CORE_PATH . "Loader.php";
 
-        require DB_PATH . "Database.php";
-
         require CORE_PATH . "Model.php";
 
         require CORE_PATH . "Request.php";
@@ -78,8 +106,12 @@ class Nayo{
         require CORE_PATH . "Migration.php";
 
         require CORE_PATH . "Exception.php";
+        
+        require CORE_PATH . "CLI.php";
 
         require DB_PATH . "DBResult.php";
+
+        require DB_PATH . "Database.php";
 
         $GLOBALS['config'] = include CONFIG_PATH . "Config.php";
 
@@ -96,7 +128,7 @@ class Nayo{
     private static function autoloadfile(){
         require CONFIG_PATH . "Autoload.php";
         $loader = new Loader();
-        $loader->coreHelper(array('url', 'language', 'helper', 'inflector'));
+        $loader->coreHelper(array('url', 'language', 'helper', 'inflector', 'string'));
         $loader->coreLibrary(array('ftp'));
         $loader->appHelper($autoload['helper']);
         $loader->appLibrary($autoload['library']);

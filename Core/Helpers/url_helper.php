@@ -1,6 +1,6 @@
 <?php
 
-function base_url($params = ''){
+function baseUrl($params = ''){
     
     require CONFIG_PATH . "Config.php";
 
@@ -9,5 +9,5 @@ function base_url($params = ''){
 }
 
 function redirect($newUrl = ""){
-    header('Location: '.base_url($newUrl));
+    header('Location: '.baseUrl($newUrl));
 }

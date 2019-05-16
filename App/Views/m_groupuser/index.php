@@ -23,7 +23,7 @@
                 <h4><?= lang('Form.data')?></h4>
               </div>
               <div class="col-6 text-right">
-                <a href="<?= base_url('mgroupuser/add')?>"><i class = "fa fa-plus"></i> Tambah</a>
+                <a href="<?= baseUrl('mgroupuser/add')?>"><i class = "fa fa-plus"></i> Tambah</a>
               </div>
             </div>
           </div>
@@ -54,7 +54,7 @@
                   {
                 ?>
                     <tr role = "row" id = <?= $value->Id?>>
-                      <td><a href= "<?= base_url('mgroupuser/edit/'.$value->Id);?>" class = "text-muted"><?= $value->GroupName?></a></td>
+                      <td><a href= "<?= baseUrl('mgroupuser/edit/'.$value->Id);?>" class = "text-muted"><?= $value->GroupName?></a></td>
                       <td><?= $value->Description?></td>
                       <td><?= $value->Created?></td>
                       <td class = "td-actions text-right">
@@ -120,13 +120,13 @@
             
             $.ajax({
               type : "POST",
-              url : "<?= base_url('mgroupuser/delete/');?>",
+              url : "<?= baseUrl('mgroupuser/delete/');?>",
               data : {id : id},
               success : function(data){
                 console.log(data);
                 // var status = $.parseJSON(data);
                 // if(status['isforbidden']){
-                //   window.location = "<?= base_url('Forbidden');?>";
+                //   window.location = "<?= baseUrl('Forbidden');?>";
                 // } else {
                 //   if(!status['status']){
                 //     for(var i=0 ; i< status['msg'].length; i++){
@@ -152,13 +152,13 @@
     table.on( 'click', '.role', function () {
         $tr = $(this).closest('tr');
         var id = $tr.attr('id');
-        window.location = "<?= base_url('mgroupuser/editrole/');?>" + id;
+        window.location = "<?= baseUrl('mgroupuser/editrole/');?>" + id;
     });
 
     table.on( 'click', '.reportrole', function () {
         $tr = $(this).closest('tr');
         var id = $tr.attr('id');
-        window.location = "<?= base_url('mgroupuser/editreportrole/');?>" + id;
+        window.location = "<?= baseUrl('mgroupuser/editreportrole/');?>" + id;
     });
   }
 

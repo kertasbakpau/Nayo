@@ -7,6 +7,7 @@ class Nayo_Controller{
     protected $session = false;
 
     public function __construct(){
+
         if(!$this->request)
             $this->request = new Request();
         if(!$this->session)
@@ -26,5 +27,7 @@ class Nayo_Controller{
     public function input(string $var){
         return $_POST[$var];
     }
+
+    
 
 }

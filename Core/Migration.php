@@ -16,7 +16,7 @@ class Nayo_Migration {
         if(!$this->db)
             $this->db = new Database();
         
-        if( $this->enable_auto_migration)
+        if($this->enable_auto_migration)
             if(!$this->isTableExist('migrations'))
                 $this->createMigrationTable();
 

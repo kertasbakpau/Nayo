@@ -22,13 +22,13 @@
                 <h4><?= lang('ui_data')?></h4>
               </div>
               <div class="col-6 text-right">
-                <!-- <a href="<?= base_url('muser')?>"><i class = "fa fa-table"></i> Data</a> -->
+                <!-- <a href="<?= baseUrl('muser')?>"><i class = "fa fa-table"></i> Data</a> -->
               </div>
             </div>
           </div>
           <div class="card-body">  
                  
-            <form method = "post" action = "<?= base_url('saveChangePassword');?>">
+            <form method = "post" action = "<?= baseUrl('saveChangePassword');?>">
               <div class="form-group">
                 <label><?= lang('ui_oldpassword')?></label>
                 <input id="oldpassword" type="password" class="form-control" name = "oldpassword" value="<?= $model['oldpassword']?>" required>
@@ -43,7 +43,7 @@
               </div>
               <div class="form-group">       
                 <input type="submit" value="<?= lang('ui_save')?>" class="btn btn-primary">
-                <a href="<?= base_url()?>" value="Index" class="btn btn-primary"><?= lang('ui_home')?></a>
+                <a href="<?= baseUrl()?>" value="Index" class="btn btn-primary"><?= lang('ui_home')?></a>
               </div>
             </form>
           </div>

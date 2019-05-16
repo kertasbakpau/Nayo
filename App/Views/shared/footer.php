@@ -18,27 +18,27 @@
             </div>
         </footer>
     </div>
-    <!-- <script src="<?= base_url('assets/bootstrapdashboard/vendor/jquery/jquery.min.js');?>"></script> -->
-    <script src="<?= base_url('assets/js/popper.min.js');?>"></script>
-    <script src="<?= base_url('assets/bootstrapdashboard/vendor/bootstrap/js/bootstrap.min.js');?>"></script>
-    <script src="<?= base_url('assets/bootstrapdashboard/vendor/bootstrap/js/plugins/bootstrap-select.min.js');?>"></script>
-    <script src="<?= base_url('assets/bootstrapdashboard/vendor/bootstrap/js/plugins/bootstrap-datepicker.min.js');?>"></script>
-    <script src="<?= base_url('assets/bootstrapdashboard/vendor/bootstrap/js/plugins/bootstrap-datepicker.id.min.js');?>"></script>
-    <!-- <script src="<?= base_url('assets/bootstrapdashboard/js/file/custom-file-input.js');?>"></script> -->
-    <script src="<?= base_url('assets/bootstrapdashboard/vendor/popper.js/umd/popper.min.js');?>"> </script>
-    <script src="<?= base_url('assets/bootstrapdashboard/js/grasp_mobile_progress_circle-1.0.0.min.js');?>"></script>
-    <script src="<?= base_url('assets/bootstrapdashboard/vendor/jquery.cookie/jquery.cookie.js');?>"> </script>
-    <script src="<?= base_url('assets/bootstrapdashboard/vendor/chart.js/Chart.min.js');?>"></script>
-    <script src="<?= base_url('assets/bootstrapdashboard/vendor/jquery-validation/jquery.validate.min.js');?>"></script>
-    <script src="<?= base_url('assets/bootstrapdashboard/vendor/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.concat.min.js');?>"></script>
-    <script src="<?= base_url('assets/bootstrapdashboard/vendor/bootstrap/js/plugins/moment.min.js');?>"></script>
-    <script src="<?= base_url('assets/bootstrapdashboard/vendor/bootstrap/js/plugins/jquery.dataTables.min.js');?>"></script>
-    <script src="<?= base_url('assets/bootstrapdashboard/vendor/bootstrap/js/plugins/bootstrap-notify.js');?>"></script>
-    <script src="<?= base_url('assets/bootstrapdashboard/vendor/bootstrap/js/plugins/bootbox.min.js');?>"></script>
-    <script src="<?= base_url('assets/bootstrapdashboard/vendor/bootstrap/js/plugins/jquery.mask.js');?>"></script>
-    <script src="<?= base_url('assets/bootstrapdashboard/vendor/bootstrap/js/plugins/jasny-bootstrap.min.js');?>"></script>
+    <!-- <script src="<?= baseUrl('assets/bootstrapdashboard/vendor/jquery/jquery.min.js');?>"></script> -->
+    <script src="<?= baseUrl('assets/js/popper.min.js');?>"></script>
+    <script src="<?= baseUrl('assets/bootstrapdashboard/vendor/bootstrap/js/bootstrap.min.js');?>"></script>
+    <script src="<?= baseUrl('assets/bootstrapdashboard/vendor/bootstrap/js/plugins/bootstrap-select.min.js');?>"></script>
+    <script src="<?= baseUrl('assets/bootstrapdashboard/vendor/bootstrap/js/plugins/bootstrap-datepicker.min.js');?>"></script>
+    <script src="<?= baseUrl('assets/bootstrapdashboard/vendor/bootstrap/js/plugins/bootstrap-datepicker.id.min.js');?>"></script>
+    <!-- <script src="<?= baseUrl('assets/bootstrapdashboard/js/file/custom-file-input.js');?>"></script> -->
+    <script src="<?= baseUrl('assets/bootstrapdashboard/vendor/popper.js/umd/popper.min.js');?>"> </script>
+    <script src="<?= baseUrl('assets/bootstrapdashboard/js/grasp_mobile_progress_circle-1.0.0.min.js');?>"></script>
+    <script src="<?= baseUrl('assets/bootstrapdashboard/vendor/jquery.cookie/jquery.cookie.js');?>"> </script>
+    <script src="<?= baseUrl('assets/bootstrapdashboard/vendor/chart.js/Chart.min.js');?>"></script>
+    <script src="<?= baseUrl('assets/bootstrapdashboard/vendor/jquery-validation/jquery.validate.min.js');?>"></script>
+    <script src="<?= baseUrl('assets/bootstrapdashboard/vendor/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.concat.min.js');?>"></script>
+    <script src="<?= baseUrl('assets/bootstrapdashboard/vendor/bootstrap/js/plugins/moment.min.js');?>"></script>
+    <script src="<?= baseUrl('assets/bootstrapdashboard/vendor/bootstrap/js/plugins/jquery.dataTables.min.js');?>"></script>
+    <script src="<?= baseUrl('assets/bootstrapdashboard/vendor/bootstrap/js/plugins/bootstrap-notify.js');?>"></script>
+    <script src="<?= baseUrl('assets/bootstrapdashboard/vendor/bootstrap/js/plugins/bootbox.min.js');?>"></script>
+    <script src="<?= baseUrl('assets/bootstrapdashboard/vendor/bootstrap/js/plugins/jquery.mask.js');?>"></script>
+    <script src="<?= baseUrl('assets/bootstrapdashboard/vendor/bootstrap/js/plugins/jasny-bootstrap.min.js');?>"></script>
     <!-- Main File-->
-    <script src="<?= base_url('assets/bootstrapdashboard/js/front.js');?>"></script>
+    <script src="<?= baseUrl('assets/bootstrapdashboard/js/front.js');?>"></script>
 </body>
 </html>
 <script>

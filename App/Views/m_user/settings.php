@@ -14,7 +14,7 @@
                   </div>
                 </div>
                 <div class="card-body">                 
-                  <form method = "post" action = "<?= base_url('savesettings');?>">
+                  <form method = "post" action = "<?= baseUrl('savesettings');?>">
                     <input hidden id = "languageid" name = "languageid" type="text">
                     <input hidden id = "rowperpage" name = "rowperpage" type="text">
                     <div class="form-group">

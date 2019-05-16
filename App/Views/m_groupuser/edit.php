@@ -22,12 +22,12 @@
                 <h4><?= lang('Form.data')?></h4>
               </div>
               <div class="col-6 text-right">
-                <a href="<?= base_url('mgroupuser')?>"><i class = "fa fa-table"></i> Data</a>
+                <a href="<?= baseUrl('mgroupuser')?>"><i class = "fa fa-table"></i> Data</a>
               </div>
             </div>
           </div>
           <div class="card-body">                
-            <form method = "post" action = "<?= base_url('mgroupuser/editsave');?>">
+            <form method = "post" action = "<?= baseUrl('mgroupuser/editsave');?>">
               <input hidden name ="idgroupuser" id="idgroupuser" value="<?= $model->Id?>">
               <div class="form-group">
                 <label><?= lang('Form.name')?></label>
@@ -39,7 +39,7 @@
               </div>
               <div class="form-group">       
                 <input type="submit" value="<?= lang('Form.save')?>" class="btn btn-primary">
-                <a href="<?= base_url('mgroupuser')?>" value="<?= lang('Form.cancel')?>" class="btn btn-primary"><?= lang('Form.cancel')?></a>
+                <a href="<?= baseUrl('mgroupuser')?>" value="<?= lang('Form.cancel')?>" class="btn btn-primary"><?= lang('Form.cancel')?></a>
               </div>
             </form>
           </div>

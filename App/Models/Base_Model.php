@@ -9,4 +9,8 @@ class Base_Model extends Nayo_Model {
     public $Created;
     public $Modified;
 
+    public function __construct(){
+        parent::__construct();
+    }
+
 }

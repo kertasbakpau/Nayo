@@ -1,7 +1,7 @@
 <?php
 
 $db['default'] = array(
-    'host' => '192.168.1.15',
+    'host' => 'SysdevMurni',
     'user' => 'sysdev',
     'password' => 'pass@word',
     'dbname' => 'nayo',

@@ -22,12 +22,12 @@
                 <h4><?= lang('Form.data')?></h4>
               </div>
               <div class="col-6 text-right">
-                <a href="<?= base_url('muser')?>"><i class = "fa fa-table"></i> Data</a>
+                <a href="<?= baseUrl('muser')?>"><i class = "fa fa-table"></i> Data</a>
               </div>
             </div>
           </div>
           <div class="card-body">                
-            <form method = "post" action = "<?= base_url('muser/editsave');?>">
+            <form method = "post" action = "<?= baseUrl('muser/editsave');?>">
               <input hidden id = "userid" type="text" class="form-control" name = "userid" value="<?= $model->Id?>">
               <input hidden id = "groupid" type="text" class="form-control" name = "groupid" value="<?= $model->M_Groupuser_Id?>">
               <div class="form-group bmd-form-group">

@@ -9,39 +9,39 @@
     <meta name="robots" content="all,follow">
     <!-- bootstrapdashboard -->
     <!-- Bootstrap CSS-->
-    <link rel="stylesheet" href="<?=  base_url('assets/bootstrapdashboard/vendor/bootstrap/css/bootstrap.min.css');?>">
-    <link rel="stylesheet" href="<?=  base_url('assets/bootstrapdashboard/vendor/bootstrap/css/bootstrap-datepicker3.css');?>">
-    <!-- <link rel="stylesheet" href="<?=  base_url('assets/css/bootstrapdashboardcustom.css');?>"> -->
-    <link rel="stylesheet" href="<?=  base_url('assets/bootstrapdashboard/vendor/bootstrap/css/bootstrap-select.min.css');?>">
-    <!-- <link rel="stylesheet" href="<?=  base_url('assets/bootstrap/css/bootstrap.css');?>"> -->
-    <!-- <link rel="stylesheet" href="<?=  base_url('assets/bootstrapdashboard/css/bootstrap-datepicker3.css');?>"> -->
-    <link rel="stylesheet" href="<?=  base_url('assets/bootstrapdashboard/vendor/bootstrap/css/animate.css');?>">
+    <link rel="stylesheet" href="<?=  baseUrl('assets/bootstrapdashboard/vendor/bootstrap/css/bootstrap.min.css');?>">
+    <link rel="stylesheet" href="<?=  baseUrl('assets/bootstrapdashboard/vendor/bootstrap/css/bootstrap-datepicker3.css');?>">
+    <!-- <link rel="stylesheet" href="<?=  baseUrl('assets/css/bootstrapdashboardcustom.css');?>"> -->
+    <link rel="stylesheet" href="<?=  baseUrl('assets/bootstrapdashboard/vendor/bootstrap/css/bootstrap-select.min.css');?>">
+    <!-- <link rel="stylesheet" href="<?=  baseUrl('assets/bootstrap/css/bootstrap.css');?>"> -->
+    <!-- <link rel="stylesheet" href="<?=  baseUrl('assets/bootstrapdashboard/css/bootstrap-datepicker3.css');?>"> -->
+    <link rel="stylesheet" href="<?=  baseUrl('assets/bootstrapdashboard/vendor/bootstrap/css/animate.css');?>">
     <!-- Font Awesome CSS-->
-    <link rel="stylesheet" href="<?=  base_url('assets/bootstrapdashboard/vendor/font-awesome/css/font-awesome.min.css');?>">
+    <link rel="stylesheet" href="<?=  baseUrl('assets/bootstrapdashboard/vendor/font-awesome/css/font-awesome.min.css');?>">
     <!-- Fontastic Custom icon font-->
-    <link rel="stylesheet" href="<?=  base_url('assets/bootstrapdashboard/css/fontastic.css');?>">
+    <link rel="stylesheet" href="<?=  baseUrl('assets/bootstrapdashboard/css/fontastic.css');?>">
     <!-- Google fonts - Roboto -->
     <!-- <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700"> -->
-    <link rel="stylesheet" href="<?=  base_url('assets/bootstrapdashboard/vendor/bootstrap/css/googlefonts.css');?>">
+    <link rel="stylesheet" href="<?=  baseUrl('assets/bootstrapdashboard/vendor/bootstrap/css/googlefonts.css');?>">
 
-    <link rel="stylesheet" href="<?=  base_url('assets/bootstrapdashboard/vendor/bootstrap/css/dataTables.bootstrap4.css');?>">
-    <link rel="stylesheet" href="<?=  base_url('assets/bootstrapdashboard/vendor/bootstrap/css/responsive.bootstrap4.min.css');?>">
+    <link rel="stylesheet" href="<?=  baseUrl('assets/bootstrapdashboard/vendor/bootstrap/css/dataTables.bootstrap4.css');?>">
+    <link rel="stylesheet" href="<?=  baseUrl('assets/bootstrapdashboard/vendor/bootstrap/css/responsive.bootstrap4.min.css');?>">
     <!-- jQuery Circle-->
-    <link rel="stylesheet" href="<?=  base_url('assets/bootstrapdashboard/css/grasp_mobile_progress_circle-1.0.0.min.css');?>">
+    <link rel="stylesheet" href="<?=  baseUrl('assets/bootstrapdashboard/css/grasp_mobile_progress_circle-1.0.0.min.css');?>">
     <!-- Custom Scrollbar-->
-    <link rel="stylesheet" href="<?=  base_url('assets/bootstrapdashboard/vendor/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.css');?>">
+    <link rel="stylesheet" href="<?=  baseUrl('assets/bootstrapdashboard/vendor/malihu-custom-scrollbar-plugin/jquery.mCustomScrollbar.css');?>">
     <!-- theme stylesheet-->
-    <link rel="stylesheet" href="<?=  base_url('assets/bootstrapdashboard/css/style.default.premium.css');?>" id="theme-stylesheet">
+    <link rel="stylesheet" href="<?=  baseUrl('assets/bootstrapdashboard/css/style.default.premium.css');?>" id="theme-stylesheet">
     <!-- Custom stylesheet - for your changes-->
-    <link rel="stylesheet" href="<?=  base_url('assets/bootstrapdashboard/css/custom.css');?>">
-    <!-- <link rel="stylesheet" href="<?=  base_url('assets/bootstrapdashboard/css/file/component.css');?>">
-    <link rel="stylesheet" href="<?=  base_url('assets/bootstrapdashboard/css/file/demo.css');?>">
-    <link rel="stylesheet" href="<?=  base_url('assets/bootstrapdashboard/css/file/normalize.css');?>"> -->
+    <link rel="stylesheet" href="<?=  baseUrl('assets/bootstrapdashboard/css/custom.css');?>">
+    <!-- <link rel="stylesheet" href="<?=  baseUrl('assets/bootstrapdashboard/css/file/component.css');?>">
+    <link rel="stylesheet" href="<?=  baseUrl('assets/bootstrapdashboard/css/file/demo.css');?>">
+    <link rel="stylesheet" href="<?=  baseUrl('assets/bootstrapdashboard/css/file/normalize.css');?>"> -->
     <!-- Favicon-->
-    <link rel="shortcut icon" href="<?=  base_url('assets/bootstrapdashboard/img/favicon.ico');?>">
+    <link rel="shortcut icon" href="<?=  baseUrl('assets/bootstrapdashboard/img/favicon.ico');?>">
 
     <!-- JS -->
-    <script src="<?= base_url('assets/bootstrapdashboard/vendor/jquery/jquery.min.js');?>"></script>
+    <script src="<?= baseUrl('assets/bootstrapdashboard/vendor/jquery/jquery.min.js');?>"></script>
     <!-- Tweaks for older IEs--><!--[if lt IE 9]>
         <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
         <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script><![endif]-->
@@ -53,7 +53,7 @@
         <!-- Sidebar Header    -->
         <div class="sidenav-header d-flex align-items-center justify-content-center">
           <!-- User Info-->
-          <div class="sidenav-header-inner text-center"><img src="<?=  base_url('assets/bootstrapdashboard/img/avatar-5.jpg');?>" alt="person" class="img-fluid rounded-circle">
+          <div class="sidenav-header-inner text-center"><img src="<?=  baseUrl('assets/bootstrapdashboard/img/avatar-5.jpg');?>" alt="person" class="img-fluid rounded-circle">
          
           </div>
           
@@ -64,18 +64,18 @@
         <div class="main-menu">
           <h5 class="sidenav-heading">Main</h5>
           <ul id="side-main-menu" class="side-menu list-unstyled">                  
-            <li><a href="<?=  base_url('office');?>"> <i class="icon-home"></i>Home</a></li>
+            <li><a href="<?=  baseUrl('office');?>"> <i class="icon-home"></i>Home</a></li>
             <li><a href="#exampledropdownDropdownGeneral" aria-expanded="false" data-toggle="collapse"> <i class="icon-interface-windows"></i><?= lang("Form.setting") ?></a>
               <ul id="exampledropdownDropdownGeneral" class="collapse list-unstyled ">
-                <li><a href="<?=  base_url('mchartofaccount');?>"><?= lang("Form.chartofaccount")?></a></li>
-                <li><a href="<?=  base_url('mbeginningbalance');?>"><?= lang("Form.beginningbalance")?></a></li>
-                <li><a href="<?=  base_url('mainsetup');?>"><?= lang("Form.linkaccount")?></a></li>
-                <li><a href="<?=  base_url('mcompany');?>"><?= lang("Form.company")?></a></li>
+                <li><a href="<?=  baseUrl('mchartofaccount');?>"><?= lang("Form.chartofaccount")?></a></li>
+                <li><a href="<?=  baseUrl('mbeginningbalance');?>"><?= lang("Form.beginningbalance")?></a></li>
+                <li><a href="<?=  baseUrl('mainsetup');?>"><?= lang("Form.linkaccount")?></a></li>
+                <li><a href="<?=  baseUrl('mcompany');?>"><?= lang("Form.company")?></a></li>
               </ul>
             </li>
             <li><a href="#exampledropdownDropdownTransaction" aria-expanded="false" data-toggle="collapse"> <i class="icon-interface-windows"></i><?= lang("Form.transaction")?></a>
               <ul id="exampledropdownDropdownTransaction" class="collapse list-unstyled ">
-                <li><a href="<?=  base_url('tjournal');?>"><?= lang("Form.transaction")?></a></li>
+                <li><a href="<?=  baseUrl('tjournal');?>"><?= lang("Form.transaction")?></a></li>
               </ul>
             </li>
           </ul>
@@ -83,7 +83,7 @@
         <div class="admin-menu">
           <h5 class="sidenav-heading"><?= "report"?></h5>
           <ul id="side-admin-menu" class="side-menu list-unstyled"> 
-            <!-- <li><a href="<?=  base_url('report');?>"><i class="icon-interface-windows"></i><?= "report"?></a></li> -->
+            <!-- <li><a href="<?=  baseUrl('report');?>"><i class="icon-interface-windows"></i><?= "report"?></a></li> -->
             <li><a href="#exampledropdownDropdownReport" aria-expanded="false" data-toggle="collapse"> <i class="icon-interface-windows"></i><?= lang("Form.report")?></a>
               <ul id="exampledropdownDropdownReport" class="collapse list-unstyled ">
               
@@ -94,8 +94,8 @@
         <div class="admin-menu">
           <h5 class="sidenav-heading">User</h5>
           <ul id="side-admin-menu" class="side-menu list-unstyled"> 
-            <li><a href="<?=  base_url('mgroupuser');?>"><i class="icon-user"></i><?= lang("Form.groupuser")?></a></li>
-            <li><a href="<?=  base_url('muser');?>"><i class="icon-user"></i><?= lang("Form.user")?></a></li>
+            <li><a href="<?=  baseUrl('mgroupuser');?>"><i class="icon-user"></i><?= lang("Form.groupuser")?></a></li>
+            <li><a href="<?=  baseUrl('muser');?>"><i class="icon-user"></i><?= lang("Form.user")?></a></li>
           </ul>
         </div>
       
@@ -108,7 +108,7 @@
         <nav class="navbar">
           <div class="container-fluid">
             <div class="navbar-holder d-flex align-items-center justify-content-between">
-              <div class="navbar-header"><a id="toggle-btn" href="#" class="menu-btn"><i class="icon-bars"> </i></a><a href="<?=  base_url();?>" class="navbar-brand">
+              <div class="navbar-header"><a id="toggle-btn" href="#" class="menu-btn"><i class="icon-bars"> </i></a><a href="<?=  baseUrl();?>" class="navbar-brand">
                   <div class="brand-text d-none d-md-inline-block"><span> </span><strong class="text-primary">TEST</strong></div></a></div>
               <ul class="nav-menu list-unstyled d-flex flex-md-row align-items-md-center">
                 <!-- Notifications dropdown-->
@@ -166,12 +166,12 @@
                     <span class="d-none d-sm-inline-block"></span>
                   </a>
                   <ul aria-labelledby="languages" class="dropdown-menu">
-                    <li><a rel="nofollow" class="dropdown-item" href ="<?=  base_url('language/change_language');?>?language=indonesia"> 
-                      <img src="<?=  base_url('assets/bootstrapdashboard/img/flags/16/ID.png')?>" alt="Indonesia" class="mr-2">
+                    <li><a rel="nofollow" class="dropdown-item" href ="<?=  baseUrl('language/change_language');?>?language=indonesia"> 
+                      <img src="<?=  baseUrl('assets/bootstrapdashboard/img/flags/16/ID.png')?>" alt="Indonesia" class="mr-2">
                       <span>Indonesia</span></a>
                     </li>
-                    <li><a rel="nofollow" class="dropdown-item"  href ="<?=  base_url('language/change_language');?>?language=english"> 
-                      <img src="<?=  base_url('assets/bootstrapdashboard/img/flags/16/US.png');?>" alt="English" class="mr-2">
+                    <li><a rel="nofollow" class="dropdown-item"  href ="<?=  baseUrl('language/change_language');?>?language=english"> 
+                      <img src="<?=  baseUrl('assets/bootstrapdashboard/img/flags/16/US.png');?>" alt="English" class="mr-2">
                       <span>English</span></a>
                     </li>
                   </ul>
@@ -183,11 +183,11 @@
                     <span class="d-none d-sm-inline-block"></span>
                   </a>
                   <ul aria-labelledby="profile" class="dropdown-menu">
-                    <li><a rel="nofollow" class="dropdown-item" href ="<?=  base_url('changePassword');?>"> 
+                    <li><a rel="nofollow" class="dropdown-item" href ="<?=  baseUrl('changePassword');?>"> 
                       <i class="fa fa-edit"></i>
                       <span><?= lang("Form.changepassword")?></span></a>
                     </li>
-                    <li><a rel="nofollow" class="dropdown-item" href ="<?=  base_url('login/dologout');?>"> 
+                    <li><a rel="nofollow" class="dropdown-item" href ="<?=  baseUrl('login/dologout');?>"> 
                       <i class="fa fa-sign-out"></i>
                       <span><?= lang("Form.logout")?></span></a>
                     </li>

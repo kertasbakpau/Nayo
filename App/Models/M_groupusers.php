@@ -9,6 +9,9 @@ class M_groupusers extends Base_Model {
 
     protected $table = 'm_groupusers';
 
+    public function __construct(){
+        parent::__construct($this->table);
+    }
     public function isDataExist($groupName){
         $params = array(
             'where' => array(

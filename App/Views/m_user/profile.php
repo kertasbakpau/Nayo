@@ -5,7 +5,7 @@
                     <!--      Wizard container        -->
                     <div class="wizard-container">
                         <div class="card card-wizard active" data-color="green" id="wizardProfile">
-                            <form action="<?= base_url('saveprofile')?>" method="post" enctype="multipart/form-data">
+                            <form action="<?= baseUrl('saveprofile')?>" method="post" enctype="multipart/form-data">
                             <!--        You can switch " data-color="primary" "  with one of the next bright colors: "green", "orange", "red", "blue"       -->
                                 <div class="card-header text-center">
                                     <h3 class="card-title">
@@ -22,7 +22,7 @@
                                                     <div class="col-sm-12">
                                                         <div class="picture-container">
                                                         <div class="picture">
-                                                            <img src="<?= base_url($_SESSION['userprofile']['PhotoPath'].$_SESSION['userprofile']['PhotoName'])?>" class="picture-src" id="wizardPicturePreview" title="">
+                                                            <img src="<?= baseUrl($_SESSION['userprofile']['PhotoPath'].$_SESSION['userprofile']['PhotoName'])?>" class="picture-src" id="wizardPicturePreview" title="">
                                                             <input type="file" id="wizard-picture" name = "file" accept="image/x-png,image/jpeg">
                                                         </div>
                                                         <h6 class="description">Choose Picture</h6>
@@ -87,7 +87,7 @@
                     <div class="card card-profile">
                         <div class="card-avatar">
                             <a href="#pablo">
-                                <img class="img" src="<?= base_url($_SESSION['userprofile']['PhotoPath'].$_SESSION['userprofile']['PhotoName'])?>">
+                                <img class="img" src="<?= baseUrl($_SESSION['userprofile']['PhotoPath'].$_SESSION['userprofile']['PhotoName'])?>">
                             </a>
                             </div>
                             <div class="card-body">

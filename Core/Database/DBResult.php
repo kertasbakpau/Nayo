@@ -94,7 +94,7 @@ class DBResult {
     }
 
     public function getById($id){
-        $this->sql = "select * from ".$this->table. " where ".$this->pk()." = ".$id;
+        $this->sql .= " where ".$this->pk()." = ".$id;
         $query = $this->db->getOne($this->sql);
         $this->result = $query;
         return $this->result;
@@ -108,11 +108,10 @@ class DBResult {
         foreach($object as $key => $value){
             if(!empty($value)){
                 $field_list[] = $key;
-                $value_list[] = "'".$value."'";
+                $value_list[] = "'".escapeString($value)."'";
             }
                 
         }
-
         $this->sql = "INSERT INTO {$this->table} (".implode(",",$field_list).") VALUES(".implode(",",$value_list).")";
         if ($this->db->query($this->sql)) {
             return $this->db->getInsertId();
@@ -127,7 +126,7 @@ class DBResult {
         foreach($object as $key => $value){
             if(!empty($value) && $key != "Id"){
                 
-                $list[] = $key." = '".$value."'";
+                $list[] = $key." = '".escapeString($value)."'";
             }
                 
         }

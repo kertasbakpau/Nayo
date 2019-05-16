@@ -2,6 +2,7 @@
 namespace App\Controllers;
 use App\Models\M_groupusers;
 use App\Controllers\Base_Controller;
+use Core\Nayo_Exception;
 
 class M_groupuser extends Base_Controller{
     

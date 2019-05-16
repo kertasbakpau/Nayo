@@ -2,8 +2,12 @@
 namespace App\Controllers;
 use Core\Libraries\File;
 use Core\Database\DBBuilder;
+use Core\Libraries\ClsList;
+use App\Models\M_users;
+use Core\Nayo_Controller;
+use Core\Libraries\Dictionary;
 
-class Test extends Base_Controller{
+class Test extends Nayo_Controller{
 
     public function index(){
         // $ftp = new Ftp('192.168.1.30', 'Komputer', 'ratrace182');
@@ -16,7 +20,19 @@ class Test extends Base_Controller{
         // $builder = new DBBuilder();
         // $test = $builder->query('select count(*) as Count from m_groupusers');
         // echo json_encode($test->Count);
-        $this->loadView('test/test');
+        // $this->loadView('test/test');
+        // echo "sdfsdf";
+        $arr = new Dictionary();
+        $arr->add("a",10);
+        $arr->add("b",20);
+        $arr->add("c",30);
+        // echo json_encode($arr->find("c"));
+        $t = $arr->where(function($value, $key){
+            return $value > 10;
+        });
+        echo json_encode($t);
+        // $list = new ClsList(new M_users);
+        // echo $list->getCollectionType();
        
     }
 

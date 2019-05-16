@@ -23,7 +23,7 @@
                 <h4><?= lang('Form.data')?></h4>
               </div>
               <div class="col-6 text-right">
-                <a href="<?= base_url('muser/add')?>"><i class = "fa fa-plus"></i> Tambah</a>
+                <a href="<?= baseUrl('muser/add')?>"><i class = "fa fa-plus"></i> Tambah</a>
               </div>
             </div>
           </div>
@@ -53,7 +53,7 @@
                     {
                   ?>
                       <tr role = "row" id = <?= $value->Id?>>
-                        <td><a href= "<?= base_url('muser/edit/'.$value->Id);?>" class = "text-muted"><?= $value->Username?></a></td>
+                        <td><a href= "<?= baseUrl('muser/edit/'.$value->Id);?>" class = "text-muted"><?= $value->Username?></a></td>
                         <td><?= $value->get_M_Groupuser()->GroupName?></td>
                         <?php 
                         if($value->IsActive == 1 ) {
@@ -124,7 +124,7 @@
         $tr = $(this).closest('tr');
 
         var id = $tr.attr('id');
-        window.location = "<?= base_url('muser/edit/');?>" + id;
+        window.location = "<?= baseUrl('muser/edit/');?>" + id;
      } );
 
      // Delete a record
@@ -132,7 +132,7 @@
         $tr = $(this).closest('tr');
         var data = table.row($tr).data();
         var id = $tr.attr('id');
-        window.location = "<?= base_url('muser/activate/');?>" + id;
+        window.location = "<?= baseUrl('muser/activate/');?>" + id;
      });
   }
 
@@ -143,11 +143,11 @@
   function delete_user(id, name){
     deleteData(name, function(result){
       if (result==true)
-        window.location = "<?= base_url('muser/delete/');?>" + id;
+        window.location = "<?= baseUrl('muser/delete/');?>" + id;
     });
   } 
   function activate_user(id){
-    window.location = "<?= base_url('muser/activate/');?>" + id;
+    window.location = "<?= baseUrl('muser/activate/');?>" + id;
   }
 </script>
       
